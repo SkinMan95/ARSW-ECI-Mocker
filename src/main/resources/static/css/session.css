@@ -20,10 +20,6 @@
 	width: 48%;
 }
 
-.menu li {
-
-}
-
 .right-header {
 	text-align: right;
 	width: 48%;
@@ -31,11 +27,13 @@
 
 .toolsCanvas {
 	display: inline-block;
-	width: 25px;
+	width: 65px;
 }
 
 .drawingCanvas {
 	display: inline-block;
+	width: 100px;
+	height: 100px;	
 }
 
 .main {
@@ -51,10 +49,7 @@
 	width: 30%;
 }
 
-.icon-star-empty, .icon-zoom-in, 
-.icon-bin, .icon-eyedropper,
-.icon-pencil2, .icon-font-size,
-.icon-redo, .icon-undo, .icon-compass {
-	display: flex;
-	width: 50px;
+.fs1 {
+	display: list-item;
+	font-size: 60px;
 }
