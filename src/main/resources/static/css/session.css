@@ -10,6 +10,7 @@
 .rigth-header {
 	display: inline-block;
 	text-align: right;
+	width: 50%;
 }
 
 .menu {
@@ -31,4 +32,8 @@
 
 .myUser {
 	width: 30%;
+}
+
+.drawingCanvas {
+	display: inline-block;
 }

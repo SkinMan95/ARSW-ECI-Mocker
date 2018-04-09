@@ -19,7 +19,6 @@
   <link rel="stylesheet" type="text/css" href="./css/session.css">
   <!--<link href="styles.css" rel="stylesheet"> --><!-- icons -->
   </head>
-
   <body class="body" onload="MockerController.init();">
     
     <header class="header">
@@ -45,13 +44,11 @@
     </header>
 
     <main role="main">
-      <canvas id="toolsCanvas" width="300" class="toolsCanvas"></canvas>
+      <canvas id="toolsCanvas" width="60" height="800" class="toolsCanvas"></canvas>
       <canvas id="drawingCanvas" width="700" class="drawingCanvas"></canvas>
     </main>
 
     <footer class="mastfoot mt-auto" />
-    
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -61,6 +58,8 @@
     <script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
     <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="js/fabric.min.js"></script>
     <script src="js/RestMockerController.js"></script>
     <script src="js/MockerController.js"></script>

@@ -21,16 +21,10 @@ var MockerController = (function () {
     const TESTING = RestMockerController.testing;
     const CANVAS_BACKGROUND_COLOR = 'rgb(255, 255, 255)';
     const CANVAS_MAIN_NAME = "drawingCanvas";
-    const CANVAS_MAIN_WIDTH = 800;
-    const CANVAS_MAIN_HEIGHT = 800;
     
     const CANVAS_TOOLS_NAME = "toolsCanvas";
-    const CANVAS_TOOLS_WIDTH = 60;
-    const CANVAS_TOOLS_HEIGHT = CANVAS_MAIN_HEIGHT;
 
     const CANVAS_USERS_NAME = "usersCanvas";
-    const CANVAS_USERS_WIDTH = CANVAS_MAIN_WIDTH - CANVAS_TOOLS_WIDTH;
-    const CANVAS_USERS_HEIGHT = 50;
     
     /* ==== GLOBAL VARIABLES ==== */
     const canvaces = {
@@ -84,30 +78,18 @@ var MockerController = (function () {
     
     var initCanvaces = function () {
 	// main canvas
-    	$('#' + CANVAS_MAIN_NAME)
-    	    .attr('width', CANVAS_MAIN_WIDTH)
-    	    .attr('height', CANVAS_MAIN_HEIGHT);
-    	
     	canvaces.main  = new fabric.Canvas(CANVAS_MAIN_NAME, {
     	    backgroundColor: CANVAS_BACKGROUND_COLOR,
     	    selectionLineWidth: 2
     	});
 
 	// tools canvas
-	$('#' + CANVAS_TOOLS_NAME)
-    	    .attr('width', CANVAS_TOOLS_WIDTH)
-    	    .attr('height', CANVAS_TOOLS_HEIGHT);
-	
 	canvaces.tools = new fabric.Canvas(CANVAS_TOOLS_NAME, {
 	    backgroundColor: CANVAS_BACKGROUND_COLOR,
     	    selectionLineWidth: 2
 	});
 
 	// users canvas
-	$('#' + CANVAS_USERS_NAME)
-    	    .attr('width', CANVAS_USERS_WIDTH)
-    	    .attr('height', CANVAS_USERS_HEIGHT);
-	
 	canvaces.users = new fabric.StaticCanvas(CANVAS_USERS_NAME, { // non-interactive
 	    backgroundColor: CANVAS_BACKGROUND_COLOR,
     	    selectionLineWidth: 2
@@ -165,3 +147,9 @@ var MockerController = (function () {
 	selectObject : selectObject
     };
 })();
+
+console.assert = function(cond, text){ // ensure to stop execution
+    if( cond ) return;
+    if( console.assert.useDebugger ) debugger;
+    throw new Error(text || "Assertion failed!");
+};
