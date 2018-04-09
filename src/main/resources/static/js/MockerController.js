@@ -1,67 +1,136 @@
 var MockerController = (function () {
 
     /* ================ PRIVATE ================ */
-    const assert = function(condition, msg = null) {
-	if (!condition) {
-	    var assertMsg = 'Assertion Error';
-	    if (msg != null) {
-		assertMsg += ': ' + msg;
-	    }
-	    throw new Error(assertMsg);
-	}
+
+    /* ==== CONSTANTS ==== */
+    const TESTING = true;
+    const CANVAS_BACKGROUND_COLOR = 'rgb(255, 255, 255)';
+    const CANVAS_MAIN_NAME = "drawingCanvas";
+    const CANVAS_MAIN_WIDTH = 800;
+    const CANVAS_MAIN_HEIGHT = 800;
+    
+    const CANVAS_TOOLS_NAME = "toolsCanvas";
+    const CANVAS_TOOLS_WIDTH = 100;
+    const CANVAS_TOOLS_HEIGHT = CANVAS_MAIN_HEIGHT;
+
+    const CANVAS_USERS_NAME = "usersCanvas";
+    const CANVAS_USERS_WIDTH = CANVAS_MAIN_WIDTH - CANVAS_TOOLS_WIDTH;
+    const CANVAS_USERS_HEIGHT = 50;
+    
+    /* ==== GLOBAL VARIABLES ==== */
+    const canvaces = {
+    	main: undefined,
+	tools: undefined,
+	users: undefined
     };
     
-    var mainCanvas = undefined;
-    const TESTING = true;
+    const assert = function(condition, msg = null) {
+    	if (!condition) {
+    	    var assertMsg = 'Assertion Error';
+    	    if (msg != null) {
+    		assertMsg += ': ' + msg;
+    	    }
+    	    throw new Error(assertMsg);
+    	}
+    };
+    
+    /* Function for testing only !!! */
+    var testCanvaces = function() {
+    	if (TESTING) {
+    	    assert(canvaces.main !== undefined, 'canvas is undefined');
+    
+    	    var rect = new fabric.Rect({
+    		left: 100,
+    		top: 100,
+    		fill: 'red',
+    		width: 20,
+    		height: 20
+    	    });
+    
+    	    canvaces.main.add(rect);
 
-    var test = function() {
-	if (TESTING) {
-	    assert(mainCanvas !== undefined, 'canvas is undefined');
-	    var rect = new fabric.Rect({
-		left: 100,
-		top: 100,
-		fill: 'red',
-		width: 20,
-		height: 20
+	    // ++++++++++++++++
+	    var circle = new fabric.Circle({
+		radius: 20, fill: 'green'
 	    });
 
-	    mainCanvas.add(rect);
-	}
+	    canvaces.tools.add(circle);
+
+	    // ++++++++++++++++
+	    var circle2 = new fabric.Circle({
+		radius: 20, fill: 'blue'
+	    });
+	    canvaces.users.add(circle2);
+    	}
     };
-
-    /* ================ PUBLIC ================ */
-
-    const CANVAS_NAME = "drawingCanvas";
-    const CANVAS_BACKGROUND_COLOR = 'rgb(255, 255, 255)';
-    const CANVAS_WIDTH = 800;
-    const CANVAS_HEIGHT = 800;
     
-    var init = function() {
-	$('#' + CANVAS_NAME)
-	    .attr('width', CANVAS_WIDTH)
-	    .attr('height', CANVAS_HEIGHT);
+    var initCanvaces = function () {
+	// main canvas
 	
-	mainCanvas  = new fabric.Canvas(CANVAS_NAME, {
+    	$('#' + CANVAS_MAIN_NAME)
+    	    .attr('width', CANVAS_MAIN_WIDTH)
+    	    .attr('height', CANVAS_MAIN_HEIGHT);
+    	
+    	canvaces.main  = new fabric.Canvas(CANVAS_MAIN_NAME, {
+    	    backgroundColor: CANVAS_BACKGROUND_COLOR,
+    	    selectionColor: 'blue',
+    	    selectionLineWidth: 2
+    	});
+
+	// tools canvas
+	
+	$('#' + CANVAS_TOOLS_NAME)
+    	    .attr('width', CANVAS_TOOLS_WIDTH)
+    	    .attr('height', CANVAS_TOOLS_HEIGHT);
+	
+	canvaces.tools = new fabric.Canvas(CANVAS_TOOLS_NAME, {
 	    backgroundColor: CANVAS_BACKGROUND_COLOR,
-	    selectionColor: 'blue',
-	    selectionLineWidth: 2
+	    selectionColor: 'black',
+    	    selectionLineWidth: 2
 	});
 
-	test();
+	// users canvas
+	
+	$('#' + CANVAS_USERS_NAME)
+    	    .attr('width', CANVAS_USERS_WIDTH)
+    	    .attr('height', CANVAS_USERS_HEIGHT);
+	
+	canvaces.users = new fabric.StaticCanvas(CANVAS_USERS_NAME, { // non-interactive
+	    backgroundColor: CANVAS_BACKGROUND_COLOR,
+	    selectionColor: 'black',
+    	    selectionLineWidth: 2
+	});
+    };
+    
+    /* ================ PUBLIC ================ */
+    
+    const init = function() {
+	initCanvaces();
+
+	testCanvaces();
     };
 
-    var connectToServer = function() {
+    const connectToServer = function() {
 	// TODO
     };
 
-    var addObject = function () {
+    const addObject = function () {
+	// TODO
+    };
+
+    const removeObject = function () {
+	// TODO
+    };
+
+    const selectObject = function () {
 	// TODO
     };
     
     return {
 	init: init,
 	connectToServer: connectToServer,
-	addObject : addObject
+	addObject : addObject,
+	removeObject : removeObject,
+	selectObject : selectObject
     };
-
 })();

@@ -2,6 +2,7 @@ var RestMockerController = (function() {
 
     /* ================ PRIVATE ================ */
 
+    const SERVER_ADDRESS = ''; // TODO
 
     /* ================ PUBLIC ================ */
 
@@ -17,10 +18,15 @@ var RestMockerController = (function() {
 	// TODO
     };
 
+    var publishInTopic = function () {
+	// TODO
+    };
+
     return {
 	init: init,
 	registerToServer : registerToServer,
-	disconnectFromServer : disconnectFromServer
+	disconnectFromServer : disconnectFromServer,
+	publishInTopic : publishInTopic
     };
     
 })();
