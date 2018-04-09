@@ -21,7 +21,7 @@
 }
 
 .menu li {
-	text-decoration: none; 
+
 }
 
 .right-header {
@@ -48,4 +48,8 @@
 
 .myUser {
 	width: 30%;
+}
+
+.icon-compass:before {
+	content: "\e949";
 }
