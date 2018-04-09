@@ -1,0 +1,34 @@
+* {
+	border: 1px solid blue;
+}
+
+.left-header {
+	text-align: center;
+	width: 50%
+}
+
+.rigth-header {
+	display: inline-block;
+	text-align: right;
+}
+
+.menu {
+	display: inline-block;
+	text-align: right;
+}
+
+.myUser{
+	display: inline-block;
+}
+
+.myNameUser {
+	display: inline-block;
+}
+
+.users {
+	display: inline-block;	
+}
+
+.myUser {
+	width: 30%;
+}

@@ -1,50 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="http://www.escuelaing.edu.co/favicon.ico">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="http://www.escuelaing.edu.co/favicon.ico">
 
-    <title>ECI ARSW - Mocker</title>
+  <title>ECI ARSW - Mocker</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <!--<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">-->
 
-    <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css" rel="stylesheet">
-    <link href="table_styles.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet"> <!-- icons -->
+  <!-- Custom styles for this template -->
+  <!--<link href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css" rel="stylesheet">-->
+  <!--<link href="table_styles.css" rel="stylesheet">-->
+  <link rel="stylesheet" type="text/css" href="./css/session.css">
+  <!--<link href="styles.css" rel="stylesheet"> --><!-- icons -->
   </head>
 
-  <body class="text-center" onload="MockerController.init();">
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <!-- <h3 class="masthead-brand">Cover</h3> -->
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="#">Orders</a>
-            <a class="nav-link" href="#">New order</a>
-            <a class="nav-link" href="updateOrders.html">Update Orders</a>
-          </nav>
-        </div>
-      </header>
+  <body class="body" onload="MockerController.init();">
+    
+    <header class="header">
+      <div class="left-header">
+        <section class="myUser">
+          <img src="./images/mini.png" width="100">
+          <h2 class="myNameUser">My Name</h1>
+        </section>
+      </div>
+      <div class="rigth-header">
+        <section id="users" class="users">
+          <h3>Connected Users</h3>
+          <img src="./images/mini.png" width="50">
+          <img src="./images/mini.png" width="50">
+          <img src="./images/mini.png" width="50">
+        </section>
+        <nav class="menu">
+          <ul>
+            <li>Leave Session</li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-      <main role="main" class="inner cover">
-	<canvas id="usersCanvas" class="canvas"></canvas>
-	<canvas id="toolsCanvas" class="canvas"></canvas>
-	<canvas id="drawingCanvas" class="canvas"></canvas>
-      </main>
+    <main role="main">
+      <canvas id="toolsCanvas" width="300" class="toolsCanvas"></canvas>
+      <canvas id="drawingCanvas" width="700" class="drawingCanvas"></canvas>
+    </main>
 
-      <footer class="mastfoot mt-auto" />
-    </div>
+    <footer class="mastfoot mt-auto" />
+    
 
 
     <!-- Bootstrap core JavaScript
-	 ================================================== -->
+    ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"><\/script>')</script>
@@ -54,6 +64,5 @@
     <script src="js/fabric.min.js"></script>
     <script src="js/RestMockerController.js"></script>
     <script src="js/MockerController.js"></script>
-
   </body>
 </html>
