@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://www.escuelaing.edu.co/favicon.ico">
+
+    <title>ECI ARSW - Order tables</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css" rel="stylesheet">
+    <link href="table_styles.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet"> <!-- icons -->
+  </head>
+
+  <body class="text-center" onload="MockerController.init();">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <!-- <h3 class="masthead-brand">Cover</h3> -->
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="#">Orders</a>
+            <a class="nav-link" href="#">New order</a>
+            <a class="nav-link" href="updateOrders.html">Update Orders</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+	<canvas id="drawingCanvas" class="canvas"></canvas>
+      </main>
+
+      <footer class="mastfoot mt-auto" />
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+	 ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/fabric.min.js"></script>
+    <script src="js/RestMockerController.js"></script>
+    <script src="js/MockerController.js"></script>
+
+  </body>
+</html>
