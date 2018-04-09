@@ -77,20 +77,39 @@ var MockerController = (function () {
 
 	$(".toolBtns").css("backgroundColor", "white");
 	
-	$(".toolBtns").click(function () {
-	    $(".toolBtns").css({
-		"backgroundColor": "white",
-		"pointer-events" : ""
-	    });
-	    
-	    $(this).css({
-		"backgroundColor": "lightgray",
-		"pointer-events" : "none"
-	    });
+	$(".toolBtns").on({
+	    click: function () {
+		$(".toolBtns").css({
+		    "backgroundColor": "white",
+		    "pointer-events" : ""
+		});
+		
+		$(this).css({
+		    "backgroundColor": "rgb(150, 150, 150)",
+		    "pointer-events" : "none"
+		});
 
-	    selectedTool = $(this).prop('id');
-	    console.info("Selecciona herramienta: " + $(this).prop('id'));
+		selectedTool = $(this).prop('id');
+		console.info("Selecciona herramienta: " + $(this).prop('id'));
+	    },
+	    mouseenter: function () {
+		if ($(this).prop('id') !== selectedTool) {
+		    $(this).css({
+		       "backgroundColor": "rgb(230, 230, 230)"
+		   }); 
+		}
+	    },
+	    mouseleave: function () {
+		if ($(this).prop('id') !== selectedTool) {
+		    $(this).css({
+			"backgroundColor": "white"
+		   }); 
+		}
+	    }
 	});
+
+	// By default start with selection tool
+	$("#selectionTool").click();
     };
 
     // TODO mejorar presentacion del error
