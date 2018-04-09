@@ -17,6 +17,7 @@
     <!--<link href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css" rel="stylesheet">-->
     <!--<link href="table_styles.css" rel="stylesheet">-->
     <link rel="stylesheet" type="text/css" href="./css/session.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <!--<link href="styles.css" rel="stylesheet"> --><!-- icons -->
   </head>
   <body class="body" onload="MockerController.init();">
@@ -45,15 +46,15 @@
 
     <main role="main">
       <div id="toolsSection" class="tools">
-	<span class="toolBtns" id="selectionTool"></span>
-	<span class="toolBtns" id="undoTool"></span>
-	<span class="toolBtns" id="redoTool"></span>
-	<span class="toolBtns" id="textTool"></span>
-	<span class="toolBtns" id="pencilTool"></span>
-	<span class="toolBtns" id="pickerTool"></span>
-	<span class="toolBtns" id="garbageTool"></span>
-	<span class="toolBtns" id="zoomTool"></span>
-	<span class="toolBtns" id="objectTool"></span> <!-- object = star -->
+	<span class="toolBtns icon-compass" id="selectionTool"></span>
+	<span class="toolBtns icon-undo" id="undoTool"></span>
+	<span class="toolBtns icon-redo" id="redoTool"></span>
+	<span class="toolBtns icon-font-size" id="textTool"></span>
+	<span class="toolBtns icon-pencil2" id="pencilTool"></span>
+	<span class="toolBtns icon-eyedropper" id="pickerTool"></span>
+	<span class="toolBtns icon-bin" id="garbageTool"></span>
+	<span class="toolBtns icon-zoom-in" id="zoomTool"></span>
+	<span class="toolBtns icon-star-empty" id="objectTool"></span> <!-- object = star -->
       </div>
       <canvas id="drawingCanvas" width="700" class="drawingCanvas"></canvas>
     </main>

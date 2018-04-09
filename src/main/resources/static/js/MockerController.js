@@ -38,6 +38,8 @@ var MockerController = (function () {
 
     var myPolygons = undefined;
 
+    var selectedTool = undefined;
+
     /* ==== FUNCTIONS ==== */
     
     /* Function for testing only !!! */
@@ -71,7 +73,24 @@ var MockerController = (function () {
 
     var initTools = function () {
 	// TODO agregar cada boton con su funcionalidad
-	$("#toolsSection").html('<h3>Caja de herramientas (Generado con Javascript)</h3>');
+	// $("#toolsSection").html('<h3>Caja de herramientas (Generado con Javascript)</h3>');
+
+	$(".toolBtns").css("backgroundColor", "white");
+	
+	$(".toolBtns").click(function () {
+	    $(".toolBtns").css({
+		"backgroundColor": "white",
+		"pointer-events" : ""
+	    });
+	    
+	    $(this).css({
+		"backgroundColor": "lightgray",
+		"pointer-events" : "none"
+	    });
+
+	    selectedTool = $(this).prop('id');
+	    console.info("Selecciona herramienta: " + $(this).prop('id'));
+	});
     };
 
     // TODO mejorar presentacion del error
