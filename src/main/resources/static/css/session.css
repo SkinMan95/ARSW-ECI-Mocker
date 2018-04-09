@@ -2,15 +2,43 @@
 	border: 1px solid blue;
 }
 
-.left-header {
-	text-align: center;
-	width: 50%
+.users, .right-header, .left-header{
+	display: inline-block;
 }
 
-.rigth-header {
+.myNameUser, .myImageUser {
 	display: inline-block;
+}
+
+.header {
+	text-align: center;
+	height: 30%;
+}
+
+.left-header {
+	/*text-align: center;*/
+	width: 48%;
+}
+
+.menu li {
+	text-decoration: none; 
+}
+
+.right-header {
 	text-align: right;
-	width: 50%;
+	width: 48%;
+}
+
+.toolsCanvas {
+	width: 10%;
+}
+
+.drawingCanvas {
+	width: 88%;
+}
+
+.main {
+	height: 70%;
 }
 
 .menu {
@@ -18,22 +46,6 @@
 	text-align: right;
 }
 
-.myUser{
-	display: inline-block;
-}
-
-.myNameUser {
-	display: inline-block;
-}
-
-.users {
-	display: inline-block;	
-}
-
 .myUser {
 	width: 30%;
-}
-
-.drawingCanvas {
-	display: inline-block;
 }
