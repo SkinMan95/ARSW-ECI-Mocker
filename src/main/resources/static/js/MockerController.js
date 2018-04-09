@@ -28,9 +28,7 @@ var MockerController = (function () {
     
     /* ==== GLOBAL VARIABLES ==== */
     const canvaces = {
-    	main: undefined,
-	tools: undefined,
-	users: undefined
+    	main: undefined
     };
 
     var sessionState = {
@@ -56,19 +54,6 @@ var MockerController = (function () {
     	    });
     
     	    canvaces.main.add(rect);
-
-	    // ++++++++++++++++
-	    var circle = new fabric.Circle({
-		radius: 20, fill: 'green'
-	    });
-
-	    canvaces.tools.add(circle);
-
-	    // ++++++++++++++++
-	    var circle2 = new fabric.Circle({
-		radius: 20, fill: 'blue'
-	    });
-	    canvaces.users.add(circle2);
     	}
     };
 
@@ -76,27 +61,21 @@ var MockerController = (function () {
 	testCanvaces();
     };
     
-    var initCanvaces = function () {
+    var initCanvas = function () {
 	// main canvas
     	canvaces.main  = new fabric.Canvas(CANVAS_MAIN_NAME, {
     	    backgroundColor: CANVAS_BACKGROUND_COLOR,
     	    selectionLineWidth: 2
     	});
-
-	// tools canvas
-	canvaces.tools = new fabric.Canvas(CANVAS_TOOLS_NAME, {
-	    backgroundColor: CANVAS_BACKGROUND_COLOR,
-    	    selectionLineWidth: 2
-	});
-
-	// users canvas
-	canvaces.users = new fabric.StaticCanvas(CANVAS_USERS_NAME, { // non-interactive
-	    backgroundColor: CANVAS_BACKGROUND_COLOR,
-    	    selectionLineWidth: 2
-	});
     };
 
-    var showErrorMessage = function(msg = undefined) {
+    var initTools = function () {
+	// TODO agregar cada boton con su funcionalidad
+	$("#toolsSection").html('<h3>Caja de herramientas (Generado con Javascript)</h3>');
+    };
+
+    // TODO mejorar presentacion del error
+    var showErrorMessage = function(msg = undefined) { 
 	msg = "ERROR" + (msg !== undefined ? msg : "");
 	alert(msg);
     };
@@ -104,7 +83,9 @@ var MockerController = (function () {
     /* ================ PUBLIC ================ */
     
     const init = function() {
-	initCanvaces();
+	initCanvas();
+	initTools();
+	
 	console.assert(RestMockerController !== undefined);
 	RestMockerController.init({
 	    onSuccess: function () {
