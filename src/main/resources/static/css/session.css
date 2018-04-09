@@ -1,5 +1,10 @@
-* {
+/** {
 	border: 1px solid blue;
+}*/
+
+.body  {
+	border: 5px solid #990000;
+	padding: 30px 30px 30px 30px;
 }
 
 .users, .right-header, .left-header{
@@ -13,6 +18,8 @@
 .header {
 	text-align: center;
 	height: 30%;
+	border: 2px dotted black;
+	margin-bottom: 30px;
 }
 
 .left-header {
@@ -28,20 +35,26 @@
 .toolsCanvas {
 	display: inline-block;
 	width: 65px;
+	border: 2px solid black;
+	padding: 10px;
 }
 
 .drawingCanvas {
 	display: inline-block;
-	width: 100px;
-	height: 100px;	
+	width: 700px;	
+	height: 700px;
 }
 
 .main {
 	display: inline-flex;	
 }
 
+ul, span {
+	list-style-type: none;
+}
+
 .menu {
-	display: inline-block;
+	display: inline-block;	
 	text-align: right;
 }
 
