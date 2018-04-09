@@ -5,9 +5,24 @@
 .body  {
 	border: 5px solid #990000;
 	padding: 30px 30px 30px 30px;
+	font-family: 'Hi Melody', cursive;
 }
 
-.users, .right-header, .left-header{
+.myNameUser {
+	font-size: 50px;
+}
+
+.users img {
+	border: 2px solid black;
+	padding: 3px;
+	margin: 3px;
+}
+
+.users h3 {
+	text-align: center;
+}
+
+.users, .right-header, .left-header, .menu{
 	display: inline-block;
 }
 
@@ -34,7 +49,7 @@
 
 .toolsCanvas {
 	display: inline-block;
-	width: 65px;
+	width: 35px;
 	border: 2px solid black;
 	padding: 10px;
 }
@@ -64,5 +79,5 @@ ul, span {
 
 .fs1 {
 	display: list-item;
-	font-size: 60px;
+	font-size: 32px;
 }

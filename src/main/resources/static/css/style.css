@@ -26,43 +26,58 @@
 
 .icon-pencil2:before {
   content: "\e906";
+  padding: 10px 0 10px 0;
 }
+
 .icon-eyedropper:before {
   content: "\e90a";
+  padding: 10px 0 10px 0;
 }
 .icon-file-picture:before {
   content: "\e927";
+  padding: 10px 0 10px 0;
 }
 .icon-compass:before {
   content: "\e949";
+  padding: 10px 0 10px 0;
 }
 .icon-undo:before {
   content: "\e965";
+  padding: 10px 0 10px 0;
 }
 .icon-redo:before {
   content: "\e966";
+  padding: 10px 0 10px 0;
 }
 .icon-zoom-in:before {
   content: "\e987";
+  padding: 10px 0 10px 0;
 }
 .icon-zoom-out:before {
   content: "\e988";
+  padding: 10px 0 10px 0;
 }
 .icon-magic-wand:before {
   content: "\e997";
+  padding: 10px 0 10px 0;
 }
 .icon-bin:before {
   content: "\e9ac";
+  padding: 10px 0 10px 0;
 }
 .icon-star-empty:before {
   content: "\e9d7";
+  padding: 10px 0 10px 0;
 }
 .icon-star-full:before {
   content: "\e9d9";
+  padding: 10px 0 10px 0;
 }
 .icon-enter:before {
   content: "\ea13";
+  padding: 10px 0 10px 0;
 }
 .icon-font-size:before {
   content: "\ea61";
+  padding: 10px 0 10px 0;
 }
