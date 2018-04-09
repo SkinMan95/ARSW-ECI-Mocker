@@ -2,11 +2,16 @@ var RestMockerController = (function() {
 
     /* ================ PRIVATE ================ */
 
-    const SERVER_ADDRESS = ''; // TODO
+    /* ==== CONSTANTS ==== */
+    const SERVER_URL = ''; // TODO
 
+    /* ==== VARIABLES ==== */
+    var stompClient = undefined;
+    
     /* ================ PUBLIC ================ */
+    const TESTING = true;
 
-    var init = function () {
+    var init = function (callback) {
 	// TODO
     };
 
@@ -18,15 +23,23 @@ var RestMockerController = (function() {
 	// TODO
     };
 
-    var publishInTopic = function () {
+    var subscribeToTopic = function(topic) {
+	console.assert(topic instanceof String);
+	// TODO
+    };
+
+    var publishInTopic = function (topic) {
+	console.assert(topic instanceof String);
 	// TODO
     };
 
     return {
+	testing: TESTING,
 	init: init,
 	registerToServer : registerToServer,
 	disconnectFromServer : disconnectFromServer,
-	publishInTopic : publishInTopic
+	publishInTopic : publishInTopic,
+	subscribeToTopic : subscribeToTopic
     };
     
 })();
