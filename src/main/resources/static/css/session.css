@@ -34,7 +34,7 @@
 
 .toolsCanvas {
 	display: inline-block;
-	width: 65px;
+	width: 35px;
 	border: 2px solid black;
 	padding: 10px;
 }
@@ -43,6 +43,7 @@
 	display: inline-block;
 	width: 700px;	
 	height: 700px;
+	border: 2px solid black;
 }
 
 .main {
@@ -62,7 +63,7 @@ ul, span {
 	width: 30%;
 }
 
-.fs1 {
+.toolBtns {
 	display: list-item;
-	font-size: 60px;
+	font-size: 32px;
 }
