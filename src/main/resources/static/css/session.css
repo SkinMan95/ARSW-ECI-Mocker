@@ -30,15 +30,16 @@
 }
 
 .toolsCanvas {
-	width: 10%;
+	display: inline-block;
+	width: 25px;
 }
 
 .drawingCanvas {
-	width: 88%;
+	display: inline-block;
 }
 
 .main {
-	height: 70%;
+	display: inline-flex;	
 }
 
 .menu {
@@ -50,6 +51,10 @@
 	width: 30%;
 }
 
-.icon-compass:before {
-	content: "\e949";
+.icon-star-empty, .icon-zoom-in, 
+.icon-bin, .icon-eyedropper,
+.icon-pencil2, .icon-font-size,
+.icon-redo, .icon-undo, .icon-compass {
+	display: flex;
+	width: 50px;
 }
