@@ -85,4 +85,5 @@ ul, span {
 .toolBtns {
 	display: list-item;
 	font-size: 32px;
+	padding-bottom: 15px;
 }
