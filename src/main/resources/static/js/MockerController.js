@@ -79,31 +79,29 @@ var MockerController = (function () {
 	
 	$(".toolBtns").on({
 	    click: function () {
-		$(".toolBtns").css({
-		    "backgroundColor": "white",
-		    "pointer-events" : ""
-		});
+		$(".toolBtns")
+		    .css({
+			"pointer-events" : ""
+		    })
+		    .removeClass('selected');
 		
-		$(this).css({
-		    "backgroundColor": "rgb(150, 150, 150)",
-		    "pointer-events" : "none"
-		});
+		$(this)
+		    .css({
+			"pointer-events" : "none"
+		    })
+		    .addClass('selected');
 
 		selectedTool = $(this).prop('id');
 		console.info("Selecciona herramienta: " + $(this).prop('id'));
 	    },
 	    mouseenter: function () {
 		if ($(this).prop('id') !== selectedTool) {
-		    $(this).css({
-		       "backgroundColor": "rgb(230, 230, 230)"
-		   }); 
+		    $(this).addClass('hover');
 		}
 	    },
 	    mouseleave: function () {
 		if ($(this).prop('id') !== selectedTool) {
-		    $(this).css({
-			"backgroundColor": "white"
-		   }); 
+		    $(this).removeClass('hover');
 		}
 	    }
 	});
