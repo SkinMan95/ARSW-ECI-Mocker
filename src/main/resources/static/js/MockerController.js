@@ -22,10 +22,6 @@ var MockerController = (function () {
     const CANVAS_BACKGROUND_COLOR = 'rgb(255, 255, 255)';
     const CANVAS_MAIN_NAME = "drawingCanvas";
     
-    const CANVAS_TOOLS_NAME = "toolsCanvas";
-
-    const CANVAS_USERS_NAME = "usersCanvas";
-    
     /* ==== GLOBAL VARIABLES ==== */
     const canvaces = {
     	main: undefined
@@ -65,6 +61,13 @@ var MockerController = (function () {
     
     var initCanvas = function () {
 	// main canvas
+	var width = $(`#${CANVAS_MAIN_NAME}`).css('width');
+	var height = $(`#${CANVAS_MAIN_NAME}`).css('height');
+
+	$(`#${CANVAS_MAIN_NAME}`)
+	    .attr('width', width)
+	    .attr('height', height);
+	
     	canvaces.main  = new fabric.Canvas(CANVAS_MAIN_NAME, {
     	    backgroundColor: CANVAS_BACKGROUND_COLOR,
     	    selectionLineWidth: 2
@@ -75,35 +78,12 @@ var MockerController = (function () {
 	// TODO agregar cada boton con su funcionalidad
 	// $("#toolsSection").html('<h3>Caja de herramientas (Generado con Javascript)</h3>');
 
-	$(".toolBtns").css("backgroundColor", "white");
-	
-	$(".toolBtns").on({
-	    click: function () {
-		$(".toolBtns")
-		    .css({
-			"pointer-events" : ""
-		    })
-		    .removeClass('selected');
-		
-		$(this)
-		    .css({
-			"pointer-events" : "none"
-		    })
-		    .addClass('selected');
+	$(".toolBtns").click(function () {
+	    $(".toolBtns").css("pointer-events", "");
+	    $(this).css("pointer-events", "none");
 
-		selectedTool = $(this).prop('id');
-		console.info("Selecciona herramienta: " + $(this).prop('id'));
-	    },
-	    mouseenter: function () {
-		if ($(this).prop('id') !== selectedTool) {
-		    $(this).addClass('hover');
-		}
-	    },
-	    mouseleave: function () {
-		if ($(this).prop('id') !== selectedTool) {
-		    $(this).removeClass('hover');
-		}
-	    }
+	    selectedTool = $(this).prop('id');
+	    console.info("Selecciona herramienta: " + $(this).prop('id'));
 	});
 
 	// By default start with selection tool
@@ -113,6 +93,7 @@ var MockerController = (function () {
     // TODO mejorar presentacion del error
     var showErrorMessage = function(msg = undefined) { 
 	msg = "ERROR" + (msg !== undefined ? msg : "");
+	console.error(msg);
 	alert(msg);
     };
     
