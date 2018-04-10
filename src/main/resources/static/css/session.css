@@ -16,12 +16,6 @@
 	margin-left: 20px;
 }
 
-.users img {
-	border: 2px solid black;
-	padding: 3px;
-	margin: 3px;
-}
-
 .users h3 {
 	text-align: center;
 }
@@ -32,23 +26,39 @@
 
 .myNameUser, .myImageUser {
 	display: inline-block;
+	text-align: center;	
+}
+
+.myImageUser {
+	vertical-align: middle;
+	margin: 0 0 0 10px;
 }
 
 .header {
-	text-align: center;
+	/*text-align: center;*/
 	height: 30%;
-	border: 2px dotted black;
+	border: 5px dotted black;
 	margin-bottom: 30px;
 }
 
 .left-header {
 	/*text-align: center;*/
-	width: 48%;
+	width: 40%;
+	height: 15%;
+	vertical-align: bottom;
 }
 
 .right-header {
-	text-align: right;
-	width: 48%;
+	text-align: center;
+	width: 40%;
+	vertical-align: middle;
+	
+}
+
+.right-header img {
+	border: 2px solid black;
+	padding: 3px;
+	margin: 3px;
 }
 
 .toolsCanvas {
@@ -74,16 +84,20 @@ ul, span {
 }
 
 .menu {
-	display: inline-block;	
-	text-align: right;
-}
-
-.myUser {
-	width: 30%;
+	float: right;
+	vertical-align: middle;
 }
 
 .toolBtns {
 	display: list-item;
 	font-size: 32px;
-	padding-bottom: 15px;
+	padding: 7px 0 7px 0;
+}
+
+.toolBtns:hover {
+	border: 1px solid #990000;
+}
+
+.toolBtns:target {
+	background: red;
 }
