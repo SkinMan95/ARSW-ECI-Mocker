@@ -5,7 +5,6 @@
         <title>ECI-MOCKER</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="css/main.css" />
         <link rel="icon" href="http://www.escuelaing.edu.co/favicon.ico">
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
@@ -20,7 +19,7 @@
                 <nav id="nav">
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#" class="button special">Sign Up</a></li>
+                        <li><a href="#two" class="button special">Sign Up</a></li>
                     </ul>
                 </nav>
             </header>
@@ -55,7 +54,7 @@
                                 <p>ECI-MOCKER cuentas con multiples figuras y plantilla que permiten diseñar paginas y tener una idea de como seran tu futuras aplicaciones</p>
                             </div>
                             <div>
-                                <p>Creado por Alejandro Anzola, Fabial Ardila y Maria Camila Gomez</p>
+                                <p>Creado por Alejandro Anzola, Fabian Ardila y Maria Camila Gomez</p>
                             </div>
                         </div>
                     </div>
@@ -73,7 +72,7 @@
                         <input type=text name=username id="nombre" class="texto"> 
                         <br>
                         <label>Sesion:</label>
-                        <select name="session">
+                        <select name="session" id="session">
                             <option value=""></option>
                             <option value="crearNuevo">Crear uno nuevo</option>
                             <option value="grupo1">Grupo 1</option>
@@ -81,17 +80,26 @@
                         </select>
                         <br>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="azul">
-                            <label class="form-check-label" for="azul"><span style="color:#1E90FF">Azul</span></label>
-                            <input type="checkbox" class="form-check-input" id="amarillo">
-                            <label class="form-check-label" for="amarillo"><span style="color:#FFD700">Amarillo</span></label>
-                            <br>
-                            <input type="checkbox" class="form-check-input" id="rojo">
-                            <label class="form-check-label" for="rojo"><span style="color:#DC143C">Rojo</span></label>
-                            <input type="checkbox" class="form-check-input" id="verde">
-                            <label class="form-check-label" for="verde"><span style="color:#7CFC00">Verde</span></label>
+                            <input class="form-check-input" type="radio" name="color" id="azul" value="azul" checked>
+                            <label class="form-check-label" for="azul">
+                               <span style="color:#1E90FF">Azul</span> 
+                            </label>
+                            <input class="form-check-input" type="radio" name="color" id="amarillo" value="amarillo">
+                            <label class="form-check-label" for="amarillo">
+                                <span style="color:#FFD700">Amarillo</span>
+                            </label>
                         </div>
-                        <input type=button class="button" value="Login"> 
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="rojo" value="rojo" checked>
+                            <label class="form-check-label" for="rojo">
+                               <span style="color:#DC143C">Rojo</span> 
+                            </label>
+                            <input class="form-check-input" type="radio" name="color" id="verde" value="verde">
+                            <label class="form-check-label" for="verde">
+                                <span style="color:#7CFC00">Verde</span>
+                            </label>
+                        </div>
+                        <a href="canvas.html" class="button" onClick="Login()">Login</a>
                     </header>
 
 
@@ -126,11 +134,10 @@
         <script src="js/util.js"></script>
         <script src="js/main.js"></script>
         <script src="/webjars/jquery/jquery.min.js"></script>
-        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="js/app.js"></script>
 
 
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+
 
 
     </body>
