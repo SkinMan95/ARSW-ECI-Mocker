@@ -78,15 +78,24 @@
                         </select>
                         <br>
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="azul">
-                            <label class="form-check-label" for="azul"><span style="color:#1E90FF">Azul</span></label>
-                            <input type="checkbox" class="form-check-input" id="amarillo">
-                            <label class="form-check-label" for="amarillo"><span style="color:#FFD700">Amarillo</span></label>
-                            <br>
-                            <input type="checkbox" class="form-check-input" id="rojo">
-                            <label class="form-check-label" for="rojo"><span style="color:#DC143C">Rojo</span></label>
-                            <input type="checkbox" class="form-check-input" id="verde">
-                            <label class="form-check-label" for="verde"><span style="color:#7CFC00">Verde</span></label>
+                            <input class="form-check-input" type="radio" name="color" id="azul" value="azul" checked>
+                            <label class="form-check-label" for="azul">
+                               <span style="color:#1E90FF">Azul</span> 
+                            </label>
+                            <input class="form-check-input" type="radio" name="color" id="amarillo" value="amarillo">
+                            <label class="form-check-label" for="amarillo">
+                                <span style="color:#FFD700">Amarillo</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="color" id="rojo" value="rojo" checked>
+                            <label class="form-check-label" for="rojo">
+                               <span style="color:#DC143C">Rojo</span> 
+                            </label>
+                            <input class="form-check-input" type="radio" name="color" id="verde" value="verde">
+                            <label class="form-check-label" for="verde">
+                                <span style="color:#7CFC00">Verde</span>
+                            </label>
                         </div>
                         <input type=button class="button" value="Login" onClick="Login()"> 
                     </header>
