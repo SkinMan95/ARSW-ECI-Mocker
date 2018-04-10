@@ -86,6 +86,12 @@ var MockerController = (function () {
 	    console.info("Selecciona herramienta: " + $(this).prop('id'));
 	});
 
+    //Selected Style
+    $('.toolBtns').on('click', function(){
+        $('.toolBtns').removeClass('btnSelected');
+        $(this).addClass('btnSelected');
+    });
+
 	// By default start with selection tool
 	$("#selectionTool").click();
     };

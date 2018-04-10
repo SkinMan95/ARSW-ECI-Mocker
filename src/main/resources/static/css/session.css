@@ -98,6 +98,6 @@ ul, span {
 	border: 1px solid #990000;
 }
 
-.toolBtns:target {
+.btnSelected {
 	background: red;
 }
