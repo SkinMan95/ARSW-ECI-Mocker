@@ -1,3 +1,192 @@
 canvas {
     border: 1px solid blue;
 }
+
+.formulario{
+    font: 150% sans-serif;
+    border: 1px solid #CED5D7;
+    border-radius: 6px;
+    padding: 45px 45px 20px;
+    margin:auto;
+    color:white;
+    height: 50vh;
+    box-shadow: 0px 5px 10px #B5C1C5, 0 0 0 10px #EEF5F7 inset;
+    width: 45%;
+    float:left;
+
+}
+
+.formulario label{
+    display: block; /* esto es para que el label se sobreponga a la caja de texto */
+    font-weight: bold;
+}
+
+.formulario div{
+    margin-bottom: 15px; /* esto los separara un poco */
+}
+
+.button{
+    border: 1px solid #DBE1EB;
+    font-size: 100%;
+    font-family: Arial, Verdana;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    background: #4972B5;
+    background: linear-gradient(left, #4972B5, #618ACB);
+    background: -moz-linear-gradient(left, #4972B5, #618ACB);
+    background: -webkit-linear-gradient(left, #4972B5, #618ACB);
+    background: -o-linear-gradient(left, #4972B5, #618ACB);
+    color: #FFFFFF;
+}
+
+.button:hover{
+    background: #365D9D;
+    background: linear-gradient(left, #365D9D, #436CAD);
+    background: -moz-linear-gradient(left, #365D9D, #436CAD);
+    background: -webkit-linear-gradient(left, #365D9D, #436CAD);
+    background: -o-linear-gradient(left, #365D9D, #436CAD);
+    color: #FFFFFF;
+    border-color: #FBFFAD;
+}
+
+.formulario2{
+    color: white;
+    padding-top: 10%;
+    border-style: solid;
+    border-color: #EBF4FB;
+    height: 30vh;
+    text-align: center;
+    float: right;
+    width: 48%;
+
+}
+
+.texto{
+    font: 100% sans-serif;
+}
+
+.canvas{
+    height: 98vh;
+    max-width: 100%;
+}
+
+input,button{
+    font: 23px arial;
+}
+
+body {
+    background-image: url("/resources/images/fondo1.png");
+    font:23px arial;
+    color: black;
+    text-align:center;
+}
+
+form, p, span {
+    margin:0;
+    padding:0; }
+
+input { font:12px arial; }
+
+a {
+    color:#0000FF;
+    text-decoration:none; }
+
+a:hover { text-decoration:underline; }
+
+#submit{
+    background-color:  #0066ff;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#wrapper, #loginform {
+    position: absolute;
+    margin-left: 50%;
+    padding-bottom:25px;
+    background:#EBF4FB;
+    width:48%;
+    height: 56%;
+    border:1px solid #ACD8F0; }
+
+#chatbox {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:80%;
+    width:90%;
+    border:1px solid #ACD8F0;
+    overflow:auto; }
+
+#usermsg {
+
+    margin:0 auto;
+    width:85%;
+    border:1px solid #ACD8F0; }
+
+#submit { width: 60px; }
+#submit { width: 60px; }
+
+.error { color: #ff0000; }
+
+#menu { padding:12.5px 25px 12.5px 25px; }
+
+.welcome { float:left; }
+
+.logout { float:right; }
+
+.msgln { margin:0 0 2px 0; }
+
+#number {
+  font-size:50px;
+  color:#FFFFFF;
+}
+
+#contenedor{
+ margin: 10px auto;
+ width: 540px;
+ height: 115px;
+}
+
+.reloj{
+ float: left;
+ font-size: 80px;
+ font-family: Courier,sans-serif;
+ color: #FFFFFF;
+}
+
+.boton{
+ outline: none;
+ border: 1px solid #363431;
+ color: white;
+ width: 128px;
+ height: 30px;
+ text-shadow: 0px -1px 1px black;
+ font-size: 20px;
+ border-radius: 5px;
+ font-family: Helvetica;
+ cursor: pointer;
+ background-image: linear-gradient(#3aad02,#2c6f05);
+}
+
+.boton:active{
+ background-image: linear-gradient(#2c6f05,#3aad02);
+}
+
+.boton:hover{
+ box-shadow: 0px 0px 14px #3aad02;
+}

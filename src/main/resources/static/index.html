@@ -1,40 +1,136 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link href="/css/login.css" rel="stylesheet">
-  </head>
+<!DOCTYPE HTML>
 
-  <body>
-    <div class="container">
-      <div class="row vertical-offset-100">
-        <div class="col-md-4 col-md-offset-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">                                
-              <div class="row-fluid user-row">
-                <img src="/images/Logo.png" class="img-responsive" alt="logo" width="200" height="200"/>
-              </div>
-            </div>
-            <div class="panel-body">
-              <form accept-charset="UTF-8" role="form" class="form-signin">
-                <fieldset>
-                  <label class="panel-login">
-                    <div class="login_result"></div>
-                  </label>
-                  <input class="form-control" placeholder="Username" id="username" type="text">
-                  <br></br>
-                  <input class="btn btn-primary btn-block" type="submit" id="login" value="Login">
-                </fieldset>
-              </form>
-            </div>
-          </div>
+<html>
+    <head>
+        <title>ECI-MOCKER</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    </head>
+    <body class="landing">
+        <div id="page-wrapper">
+
+            <!-- Header -->
+            <header id="header">
+                <h1 id="logo"><a href="index.html">Landed</a></h1>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#" class="button special">Sign Up</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Banner -->
+            <section id="banner">
+                <div class="content">
+                    <header>
+                        <h2>ECI-MOCKER</h2>
+                        <p>Una herramienta para modelar<br />
+                            futuras herramientas.
+                        </p>
+                    </header>
+                    <span class="image"><img src="images/Logo.png" alt="" /></span>
+                </div>
+                <a href="#one" class="goto-next scrolly">Next</a>
+            </section>
+
+            <!-- One -->
+            <section id="one" class="spotlight style1 bottom">
+                <span class="image fit main"><img src="images/fondoLogin.jpg" alt="" /></span>
+                <div class="content">
+                    <div class="container">
+                        <div class="row">
+                            <div>
+                                <header>
+                                    <h2>¿QUE ES ECI-MOCKER?</h2>
+                                    <p>Es una herramienta para diseñar y modelar futuras aplicaciones o espacios web</p>
+                                </header>
+                            </div>
+                            <div>
+                                <p>ECI-MOCKER cuentas con multiples figuras y plantilla que permiten diseñar paginas y tener una idea de como seran tu futuras aplicaciones</p>
+                            </div>
+                            <div>
+                                <p>Creado por Alejandro Anzola, Fabial Ardila y Maria Camila Gomez</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#two" class="goto-next scrolly">Next</a>
+            </section>
+
+            <!-- Two -->
+            <section id="two" class="spotlight style2 right">
+                <span class="image fit main"><img src="images/fondoLogin.jpg" alt="" /></span>
+                <div class="content">
+                    <header>
+                        <h3>LOGIN</h3>
+                        <label>Usuario:</label>
+                        <input type=text name=username id="nombre" class="texto"> 
+                        <br>
+                        <label>Sesion:</label>
+                        <select name="session">
+                            <option value=""></option>
+                            <option value="crearNuevo">Crear uno nuevo</option>
+                            <option value="grupo1">Grupo 1</option>
+                            <option value="grupoPlaneacion">Grupo de Planeacion</option>
+                        </select>
+                        <br>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="azul">
+                            <label class="form-check-label" for="azul"><span style="color:#1E90FF">Azul</span></label>
+                            <input type="checkbox" class="form-check-input" id="amarillo">
+                            <label class="form-check-label" for="amarillo"><span style="color:#FFD700">Amarillo</span></label>
+                            <br>
+                            <input type="checkbox" class="form-check-input" id="rojo">
+                            <label class="form-check-label" for="rojo"><span style="color:#DC143C">Rojo</span></label>
+                            <input type="checkbox" class="form-check-input" id="verde">
+                            <label class="form-check-label" for="verde"><span style="color:#7CFC00">Verde</span></label>
+                        </div>
+                        <input type=button class="button" value="Login"> 
+                    </header>
+
+
+                </div>
+                <a href="#footer" class="goto-next scrolly">Next</a>
+            </section>
+
+
+
+            <!-- Footer -->
+            <footer id="footer">
+                <ul class="icons">
+                    <li><a href="https://twitter.com/escuelaing?lang=es" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://www.facebook.com/EscuelaIng/" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="https://www.linkedin.com/edu/escuela-colombiana-de-ingenier%C3%ADa-%27julio-garavito%27-11508" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="https://www.instagram.com/escuelaing/" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="https://github.com/ARSW-Labs/ARSW-ECI-Mocker" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </footer>
+
         </div>
-      </div>
-    </div>
-    
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <!--<script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>-->
-  </body>
+
+        <!-- Scripts -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.scrolly.min.js"></script>
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/jquery.scrollex.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/main.js"></script>
+        <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
+
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+
+
+    </body>
 </html>
