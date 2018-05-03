@@ -1,5 +1,6 @@
 package edu.eci.arsw.ecimocker;
 
+import edu.eci.arsw.ecimocker.CanvasObject.CanvasObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -17,8 +18,8 @@ public class STOMPMessagesHandler {
     SimpMessagingTemplate msgt;
 
     @MessageMapping("newpoint.{drawnum}")
-    public void handlePointEvent(String pt, @DestinationVariable String drawnum) throws Exception {
-        System.out.println("New point received!: " + pt);
-        msgt.convertAndSend("/topic/newpoint." + drawnum, pt);
+    public void handleObjectEvent(CanvasObject obj, @DestinationVariable String session) throws Exception {
+        System.out.println("New object received!: " + obj);
+        msgt.convertAndSend("/topic/newobject." + session, obj);
     }
 }
