@@ -50,8 +50,9 @@ var MockerController = (function () {
     		width: 20,
     		height: 20
     	    });
-    
+            console.log(rect);
     	    canvaces.main.add(rect);
+            console.log(rect);
     	}
     };
 
