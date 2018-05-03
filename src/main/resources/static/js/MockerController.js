@@ -1,5 +1,20 @@
 var MockerController = (function () {
-
+	    
+    const objectModel = { // NO USAR ESTE OBJECTO
+	objId: 0,
+	selected: false,
+	userId: undefined,
+	type: "rect", // new fabric.Rect({...attributes...})
+	attributes: { // DINAMICO: VARIA SEGUN EL 'TYPE'
+	    pos: {x, y},
+	    rot: 0,
+	    scale: 1.0,
+	    color: "red",
+	    width: 15,
+	    height: 20
+	}
+    };
+    
     /* ================ PRIVATE ================ */
 
     /* ==== CLASSES ==== */
@@ -16,7 +31,7 @@ var MockerController = (function () {
 	    this.points = points;
 	}
     }
-
+    
     /* ==== CONSTANTS ==== */
     const TESTING = RestMockerController.testing;
     const CANVAS_BACKGROUND_COLOR = 'rgb(255, 255, 255)';
@@ -25,30 +40,30 @@ var MockerController = (function () {
     /* ==== GLOBAL VARIABLES ==== */
     const canvaces = {
     	main: undefined
-    };
-
+    };	    
+    
     var sessionState = {
 	polygons: undefined,
 	users: undefined
-    };
-
+    };	    
+    
     var myPolygons = undefined;
-
+    
     var selectedTool = undefined;
-
+    
     /* ==== FUNCTIONS ==== */
     
     /* Function for testing only !!! */
     var testCanvaces = function() {
     	if (TESTING) {
     	    console.assert(canvaces.main !== undefined, 'canvas is undefined');
-    
+    	    
     	    var rect = new fabric.Rect({
-    		left: 100,
-    		top: 100,
-    		fill: 'red',
-    		width: 20,
-    		height: 20
+    	    	left: 100,
+    	    	top: 100,
+    	    	fill: 'red',
+    	    	width: 20,
+    	    	height: 20
     	    });
             console.log(rect);
     	    canvaces.main.add(rect);
@@ -87,11 +102,11 @@ var MockerController = (function () {
 	    console.info("Selecciona herramienta: " + $(this).prop('id'));
 	});
 
-    //Selected Style
-    $('.toolBtns').on('click', function(){
-        $('.toolBtns').removeClass('btnSelected');
-        $(this).addClass('btnSelected');
-    });
+	//Selected Style
+	$('.toolBtns').on('click', function(){
+            $('.toolBtns').removeClass('btnSelected');
+            $(this).addClass('btnSelected');
+	});
 
 	// By default start with selection tool
 	$("#selectionTool").click();
