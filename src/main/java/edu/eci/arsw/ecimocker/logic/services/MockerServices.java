@@ -55,7 +55,7 @@ public interface MockerServices {
 
     /**
      * Obtiene el token para que un usuario se conecte al servidor, si el
-     * usuario ya tenia un token antes, el anterior se revocay se asigna el
+     * usuario ya tenia un token antes, el anterior se revoca y se asigna el
      * nuevo
      *
      * @param session numero de sesion
@@ -83,15 +83,7 @@ public interface MockerServices {
      * @throws MockerServicesException el token no esta registrado en ninguna
      * sesion
      */
-    void dissociateUser(String token) throws MockerServicesException;
-
-    /**
-     * Agrega una nueva sesion al servidor
-     *
-     * @param n numero de la sesion
-     * @throws MockerServicesException la sesion ya existe
-     */
-    void addNewSession(int n) throws MockerServicesException;
+    void dissociateUserFromSession(String token) throws MockerServicesException;
 
     /**
      * Obtiene todos los objetos dentro de una sesion
