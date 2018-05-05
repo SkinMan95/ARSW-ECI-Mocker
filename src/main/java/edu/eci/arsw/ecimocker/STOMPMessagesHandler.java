@@ -1,6 +1,6 @@
 package edu.eci.arsw.ecimocker;
 
-import edu.eci.arsw.ecimocker.CanvasObject.CanvasObject;
+import edu.eci.arsw.ecimocker.entities.CanvasObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;

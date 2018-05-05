@@ -1,4 +1,4 @@
-package edu.eci.arsw.ecimocker.CanvasObject;
+package edu.eci.arsw.ecimocker.entities;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
