@@ -1,7 +1,8 @@
 var MockerController = (function () {
 	    
     const objectModel = { // NO USAR ESTE OBJECTO
-	objId: 0,
+	objId: 0, // concateniacion del numero del usuario que
+	// lo creo con el numero de objetos que ha creado
 	selected: false,
 	userId: undefined,
 	type: "rect", // new fabric.Rect({...attributes...})
@@ -29,6 +30,16 @@ var MockerController = (function () {
 	constructor(id, points) {
 	    this.id = id;
 	    this.points = points;
+	}
+    }
+
+    class CObject {
+	constructor(id) {
+	    this.id = id;
+	    this.selected = true; // por defecto esta seleccionado al crearse
+	    this.userId = 0; // TODO cambiar por el id del usuario
+	    this.type = "rect"; // por defecto
+	    this.attributes = {};
 	}
     }
     
