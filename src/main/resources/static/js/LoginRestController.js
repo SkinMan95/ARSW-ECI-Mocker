@@ -16,9 +16,16 @@ var LoginRestController = (function(){
                 .catch(callback.onFailed);
     };
     
+    var newUser = function(user, callback){
+        axios.post(DEFAULT_ADDRESS + "/mocker/users/newuser", user)
+                .then(callback.onSuccess)
+                .catch(callback.onFailed);
+    };
+    
     return {
         newSession: newSession,
-        getSessions: getSessions
+        getSessions: getSessions,
+        newUser: newUser
     };
     
 })();

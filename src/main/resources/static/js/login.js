@@ -28,6 +28,11 @@ var LoginControllerModule = (function () {
             nuevaSesion($('#nSesion').val());
         });
         
+        $('#registrarUsuario').click(function(){
+            var user = {userName: $('#nombre'), userId: 0, color: "#ffffff"}
+            nuevoUsuario(user);
+        })
+        
         actualizarLista();
     };
     
@@ -35,7 +40,6 @@ var LoginControllerModule = (function () {
         LoginRestController.newSession(session, {
             onSuccess: function (payload) {
                 actualizarLista();
-                alert("EXITO");
             },
             onFailed: function (error) {
                 console.error(error);
@@ -55,7 +59,6 @@ var LoginControllerModule = (function () {
                                      .text(lista[i].sessionName)
                                    );
                 }
-                alert("EXITO");
                 console.log(payload);
             },
             onFailed: function(error){
@@ -65,6 +68,20 @@ var LoginControllerModule = (function () {
         });
         
     };
+    
+    var nuevoUsuario = function (user){
+        LoginRestController.newUser(user,{
+            onSuccess: function (){
+                alert("Se registro satisfactoriamente")
+            },
+            onFailed: function (error) {
+                console.error(error);
+                alert("Fallo");
+            }
+        });
+    };
+    
+
 
     return {
         init: init
