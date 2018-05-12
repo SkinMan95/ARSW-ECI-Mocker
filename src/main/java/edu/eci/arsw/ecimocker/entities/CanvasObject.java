@@ -6,11 +6,12 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author Alejandro Anzola email: alejandro.anzola@mail.escuelaing.edu.co
  */
-public class CanvasObject {
+public class CanvasObject implements Comparable<CanvasObject> {
 
     private int objId;
     private boolean selected;
     private int userId;
+    private int session;
     private String type;
     private String attributes;
 
@@ -67,6 +68,19 @@ public class CanvasObject {
 
     public static AtomicInteger getStaticID() {
         return staticID;
+    }
+
+    public int getSession() {
+        return session;
+    }
+
+    public void setSession(int session) {
+        this.session = session;
+    }
+
+    @Override
+    public int compareTo(CanvasObject o) {
+        return Integer.compare(this.objId, o.getObjId());
     }
 
 }

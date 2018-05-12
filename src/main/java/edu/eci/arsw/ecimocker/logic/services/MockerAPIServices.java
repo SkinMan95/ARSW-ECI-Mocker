@@ -143,6 +143,7 @@ public class MockerAPIServices {
     public ResponseEntity<?> updateObject(@PathVariable("sessionid") int session, @RequestBody CanvasObject updObj, @RequestParam("token") String token) {
         try {
             services.updateObject(session, updObj, token);
+            
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (MockerServicesException ex) {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);

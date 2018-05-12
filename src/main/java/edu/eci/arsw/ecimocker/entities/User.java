@@ -8,6 +8,7 @@ public class User {
 
     private String userName;
     private int userId;
+    private String color;
 
     public User() {
         this(0, "");
@@ -36,6 +37,14 @@ public class User {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
 }

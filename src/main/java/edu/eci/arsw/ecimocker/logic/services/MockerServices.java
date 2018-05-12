@@ -40,7 +40,8 @@ public interface MockerServices {
      * Registra un nuevo usuario al servicio
      *
      * @param newUser nuevo usuario
-     * @throws MockerServicesException el usuario ya existe
+     * @throws MockerServicesException el usuario ya existe o existe un usuario
+     * con el mismo color
      */
     void registerUser(User newUser) throws MockerServicesException;
 
