@@ -77,10 +77,14 @@
                         <label>Sesion:</label>
                         <select name="session" id="session">
                             <option value=""></option>
-                            <option value="crearNuevo">Crear uno nuevo</option>
-                            <option value="grupo1">Grupo 1</option>
-                            <option value="grupoPlaneacion">Grupo de Planeacion</option>
+                            <option value="crearNuevo">Crear sesion</option>
                         </select>
+                        <br>                      
+                        <label class="newsession">Nombre de la Sesion:</label>
+                        <input type=text name=nombreSesion id="nSesion" class="texto newsession"> 
+                        <br>
+                        <button class="button newsession" id="registrar">Registrar Sesion</button>
+                        <br>
                         <br>
                         <button class="button" id="login">Login</button>
                     </header>
@@ -122,6 +126,7 @@
         </div>
 
         <!-- Scripts -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery.scrolly.min.js"></script>
         <script src="js/jquery.dropotron.min.js"></script>
@@ -130,6 +135,7 @@
         <script src="js/util.js"></script>
         <script src="js/main.js"></script>
         <script src="/webjars/jquery/jquery.min.js"></script>
+        <script src="js/LoginRestController.js"></script>
         <script src="js/login.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 

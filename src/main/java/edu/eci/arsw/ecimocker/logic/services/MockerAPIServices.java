@@ -33,6 +33,7 @@ public class MockerAPIServices {
     @PostMapping("/sessions/newsession")
     public ResponseEntity<?> addNewSession(@RequestBody String sessionName) {
         try {
+            System.out.println(sessionName);
             return new ResponseEntity<>(services.addNewSession(sessionName), HttpStatus.CREATED);
         } catch (MockerServicesException ex) {
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
