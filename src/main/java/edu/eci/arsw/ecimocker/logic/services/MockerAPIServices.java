@@ -6,6 +6,7 @@ import edu.eci.arsw.ecimocker.entities.User;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,7 +31,7 @@ public class MockerAPIServices {
     @Autowired
     MockerServices services;
     
-    @PostMapping("/sessions/newsession")
+    @PostMapping(value = "/sessions/newsession", consumes = MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<?> addNewSession(@RequestBody String sessionName) {
         try {
             System.out.println(sessionName);

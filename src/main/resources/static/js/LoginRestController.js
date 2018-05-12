@@ -4,7 +4,7 @@ var LoginRestController = (function(){
     
     var newSession = function(sessionName, callback){
         console.log(sessionName);
-        axios.post(DEFAULT_ADDRESS + "/mocker/sessions/newsession", sessionName)
+        axios.post(DEFAULT_ADDRESS + "/mocker/sessions/newsession", sessionName, {headers: {"Content-Type": "text/plain"}})
                 .then(callback.onSuccess)
                 .catch(callback.onFailed);
         

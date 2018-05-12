@@ -26,7 +26,7 @@ var LoginControllerModule = (function () {
         
         $('#registrar').click(function(){
             nuevaSesion($('#nSesion').val());
-        })
+        });
         
         actualizarLista();
     };
