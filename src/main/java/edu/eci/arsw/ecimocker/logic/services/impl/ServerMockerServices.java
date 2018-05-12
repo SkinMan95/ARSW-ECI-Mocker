@@ -83,7 +83,7 @@ public class ServerMockerServices implements MockerServices {
     }
 
     private boolean userExists(User u) {
-        return true;
+        return false;
     }
     
     @Override

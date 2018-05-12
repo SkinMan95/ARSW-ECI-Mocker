@@ -26,10 +26,11 @@ var LoginControllerModule = (function () {
         
         $('#registrar').click(function(){
             nuevaSesion($('#nSesion').val());
+            $('.newsession').hide();
         });
         
         $('#registrarUsuario').click(function(){
-            var user = {userName: $('#nombre'), userId: 0, color: "#ffffff"}
+            var user = {userName: $('#nombre').text(), userId: 0, color: $('#color').text()}
             nuevoUsuario(user);
         })
         
@@ -52,6 +53,16 @@ var LoginControllerModule = (function () {
         LoginRestController.getSessions({
             onSuccess: function (payload){
                 var lista = payload.data;
+                $('#session').html('');
+                $('#session')
+                            .append($('<option>')
+                                     .attr('value', "")
+                                   );
+                $('#session')
+                            .append($('<option>')
+                                     .attr('value', "crearNuevo")
+                                     .text("Crear sesion")
+                                   );
                 for(i in lista){
                     $('#session')
                             .append($('<option>')
@@ -70,16 +81,20 @@ var LoginControllerModule = (function () {
     };
     
     var nuevoUsuario = function (user){
+        //console.log(user);
         LoginRestController.newUser(user,{
-            onSuccess: function (){
-                alert("Se registro satisfactoriamente")
+            onSuccess: function (payload){
+                console.log(payload.data);
+                alert("Se registro satisfactoriamente");
             },
-            onFailed: function (error) {
-                console.error(error);
+            onFailed: function (err) {
+                console.error(err);
                 alert("Fallo");
             }
         });
     };
+    
+    
     
 
 
