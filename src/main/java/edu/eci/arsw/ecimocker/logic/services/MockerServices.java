@@ -73,7 +73,7 @@ public interface MockerServices {
      * @param session numero de la sesion
      * @param token token del usuario
      * @return pertenece a la sesion
-     * @throws MockerServicesException la sesion no existe
+     * @throws MockerServicesException la sesion no existe o el token no existe
      */
     boolean isValidToken(int session, String token) throws MockerServicesException;
 
