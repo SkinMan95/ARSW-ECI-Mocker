@@ -5,12 +5,14 @@ var LoginControllerModule = (function () {
 
         $('#login').click(function () {
             var user = $("#nombre").val();
-            var session = $("#session").val();
+            var session = $('#session>option:selected').text();
             if (user === "" || session === "") {
                 alert("DEBE LLENAR TODOS LOS CAMPOS");
             }
             console.log("USUARIO: " + user);
             console.log("SESION: " + session);
+            
+            tokenUsuario();
 
         });
         
@@ -81,7 +83,6 @@ var LoginControllerModule = (function () {
     };
     
     var nuevoUsuario = function (user){
-        //console.log(user);
         LoginRestController.newUser(user,{
             onSuccess: function (payload){
                 console.log(payload.data);
@@ -93,6 +94,23 @@ var LoginControllerModule = (function () {
             }
         });
     };
+    
+    var tokenUsuario = function (){
+        var user = {userName: $('#nombre').val(), userId: 0, color: $('#color').val()}
+        var sesion = $('#session>option:selected').val();
+        LoginRestController.tokenUser(sesion, user,{
+            onSuccess: function(payload){
+               sessionStorage.setItem("usuario",JSON.stringify(user));
+               sessionStorage.setItem("token",payload.data);
+               sessionStorage.setItem("sesion",$('#session>option:selected').val());
+           
+            },
+            onFailed: function (error){
+               console.error(error);
+                alert(error); 
+            }
+        });
+    }
     
     
     

@@ -47,4 +47,9 @@ public class User {
         this.color = color;
     }
 
+    @Override
+    public String toString() {
+        return "User{" + "userName=" + userName + ", userId=" + userId + ", color=" + color + '}';
+    }
+
 }

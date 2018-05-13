@@ -59,6 +59,7 @@ public class MockerAPIServices {
     @PostMapping("/users/newuser")
     public ResponseEntity<?> registerUser(@RequestBody User newUser) {
         try {
+            System.out.println(newUser);
             services.registerUser(newUser);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (MockerServicesException ex) {

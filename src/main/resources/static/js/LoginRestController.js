@@ -22,10 +22,19 @@ var LoginRestController = (function(){
                 .catch(callback.onFailed);
     };
     
+    var tokenUser = function(sessionID, user, callback){
+        console.log("Usuario:" , user);
+        console.log("Sesion:" , sessionID);
+        axios.post(DEFAULT_ADDRESS + "/mocker/tokens/" + sessionID ,user)
+                .then(callback.onSuccess)
+                .catch(callback.onFailed);
+    };
+    
     return {
         newSession: newSession,
         getSessions: getSessions,
-        newUser: newUser
+        newUser: newUser,
+        tokenUser: tokenUser
     };
     
 })();
