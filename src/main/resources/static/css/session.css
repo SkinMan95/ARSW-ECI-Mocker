@@ -5,17 +5,24 @@
 .body  {
 	/*border: 5px solid #990000;*/
 	padding: 50px;
-	font-family: Arial, Verdana;
-	background: url(../images/background.jpg);
+	font-family: sans-serif;
+        background-color: #ffffff;
+	/*background-image: url(../images/fondoCanvas.jpg);*/
 	position: relative;
 	margin: 20px;
+        /*border: 25px solid green;*/
 	box-shadow: 
-	0 0 0 10px hsl(0, 0%, 50%),
+        0 0 50px;
+        transition: 0.3s color;
+        color: #1F618D;
+	/*0 0 0 10px hsl(0, 0%, 50%),
 	0 0 0 15px hsl(0, 0%, 60%),
 	0 0 0 20px hsl(0, 0%, 70%),
 	0 0 0 25px hsl(0, 0%, 80%),
-	0 0 0 30px hsl(0, 0%, 90%);
+	0 0 0 30px hsl(0, 0%, 90%);*/
 }
+
+
 
 .myNameUser {
 	font-size: 50px;
@@ -35,7 +42,12 @@
 
 .myNameUser, .myImageUser {
 	display: inline-block;
-	text-align: center;	
+	text-align: center;
+        font-size: 40px;
+        font-weight: bold;
+        color: #5DADE2;
+        
+        
 }
 
 .myImageUser {
@@ -44,9 +56,9 @@
 }
 
 .header {
-	/*text-align: center;*/
+	/*text-align: center;
 	height: 30%;
-	border: 2px dotted black;
+	border: 2px dotted black;*/
 	margin-bottom: 30px;
 }
 
@@ -61,6 +73,7 @@
 	text-align: center;
 	width: 40%;
 	vertical-align: middle;
+        
 	
 }
 
@@ -72,8 +85,8 @@
 
 .toolsCanvas {
 	display: inline-block;
-	width: 35px;
-	border: 2px solid black;
+	/*width: 35px;
+	/border: 2px solid black;*/
 	padding: 10px 15px 10px 15px;
 }
 
@@ -85,6 +98,7 @@
 }
 
 .main {
+        
 	display: inline-flex;	
 }
 
@@ -94,12 +108,14 @@ ul, span {
 
 .menu {
 	vertical-align: middle;
+        color: floralwhite;
 }
 
 .toolBtns {
 	display: list-item;
 	font-size: 32px;
 	padding: 7px 0 7px 0;
+        /*color: gray;*/
 }
 
 .toolBtns:hover {
@@ -107,12 +123,12 @@ ul, span {
 }
 
 .btnSelected {
-	background: black;
-	color: white;
+	/*background: white;*/
+	color: #5DADE2;
 }
 
 .menu a {
 	text-decoration: none;
 	font-family: Arial, Verdana;
-	color: black;
+	
 }
