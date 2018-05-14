@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.atomic.AtomicInteger;
 import javafx.util.Pair;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,8 @@ public class ServerMockerServices implements MockerServices {
 
     public static final int TOKEN_BYTE_SIZE = 32; // 256 bits
 
-    private static int sessionsIDS = 0;
-    private static int userIDS = 0;
+    private static AtomicInteger sessionsIDS = new AtomicInteger(0);
+    private static AtomicInteger userIDS = new AtomicInteger(0);
 
     private static final Random RANDOM = new Random();
 
@@ -53,7 +54,7 @@ public class ServerMockerServices implements MockerServices {
             throw new MockerServicesException("Ya existe una sesion con el mismo nombre");
         }
 
-        int id = sessionsIDS++;
+        int id = sessionsIDS.getAndAdd(1);
         sessions.put(sessionName, new Session(id, sessionName));
         sessionObjects.put(id, new ConcurrentHashMap<>());
         return id;
@@ -129,7 +130,7 @@ public class ServerMockerServices implements MockerServices {
             throw new MockerServicesException("El usuario ya existe");
         }
 
-        newUser.setUserId(userIDS++);
+        newUser.setUserId(userIDS.getAndAdd(1));
         users.put(newUser.getUserName(), newUser);
     }
 
