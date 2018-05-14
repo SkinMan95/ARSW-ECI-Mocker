@@ -23,6 +23,8 @@ var StateSessionControllerModule = (function () {
                     .append($('<button>')
                             .attr("class", "btn")
                             .css({"background-color":color})
+                            .css({"margin":"5px"})
+                            .css({"width":"40px","height":"40px"})
                             .attr("title", usuarios[i].userName)
                             );
         }
