@@ -32,9 +32,9 @@ var LoginControllerModule = (function () {
         });
         
         $('#registrarUsuario').click(function(){
-            var user = {userName: $('#nombreR').text(), userId: 0, color: $('#color').text()}
+            var user = {userName: $('#nombreR').val(), userId: 0, color: $('#color').val()};
             nuevoUsuario(user);
-        })
+        });
         
         actualizarLista();
     };
@@ -96,7 +96,7 @@ var LoginControllerModule = (function () {
     };
     
     var tokenUsuario = function (){
-        var user = {userName: $('#nombre').val(), userId: 0, color: $('#color').val()}
+        var user = {userName: $('#nombre').val(), userId: 0, color: $('#color').val()};
         var sesion = $('#session>option:selected').val();
         LoginRestController.tokenUser(sesion, user,{
             onSuccess: function(payload){
@@ -110,7 +110,7 @@ var LoginControllerModule = (function () {
                 alert(error); 
             }
         });
-    }
+    };
     
     
     
@@ -118,7 +118,7 @@ var LoginControllerModule = (function () {
 
     return {
         init: init
-    }
+    };
 
 })();
 
