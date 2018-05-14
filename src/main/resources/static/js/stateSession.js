@@ -18,11 +18,13 @@ var StateSessionControllerModule = (function () {
 
     var actualizarListaUsuarios = function (usuarios) {
         for (i in usuarios) {
+            var color = "#" + usuarios[i].color;
             $('#usuariosConectados')
                     .append($('<button>')
-                    .attr( "class", "btn btn-primary")
-                    .attr("title", usuarios[i].userName)
-            );
+                            .attr("class", "btn")
+                            .css({"background-color":color})
+                            .attr("title", usuarios[i].userName)
+                            );
         }
     };
 
