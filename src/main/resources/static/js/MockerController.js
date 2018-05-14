@@ -133,6 +133,7 @@ var MockerController = (function () {
     /* ================ PUBLIC ================ */
     
     const init = function() {
+        StateSessionControllerModule.init();
 	initCanvas();
 	initTools();
 	

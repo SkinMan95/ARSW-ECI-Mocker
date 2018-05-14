@@ -11,9 +11,7 @@
 	position: relative;
 	margin: 20px;
         /*border: 25px solid green;*/
-	box-shadow: 
-        0 0 50px;
-        transition: 0.3s color;
+	box-shadow: 0 0 50px;
         color: #1F618D;
 	/*0 0 0 10px hsl(0, 0%, 50%),
 	0 0 0 15px hsl(0, 0%, 60%),
