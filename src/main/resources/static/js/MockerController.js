@@ -1,6 +1,6 @@
 var MockerController = (function () {
 	    
-    const objectModel = { // NO USAR ESTE OBJECTO
+    /*const objectModel = { // NO USAR ESTE OBJECTO
 	objId: 0, // concateniacion del numero del usuario que
 	// lo creo con el numero de objetos que ha creado
 	selected: false,
@@ -14,7 +14,7 @@ var MockerController = (function () {
 	    width: 15,
 	    height: 20
 	}
-    };
+    };*/
     
     /* ================ PRIVATE ================ */
 

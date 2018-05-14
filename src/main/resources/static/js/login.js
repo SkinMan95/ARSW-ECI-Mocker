@@ -46,7 +46,7 @@ var LoginControllerModule = (function () {
             },
             onFailed: function (error) {
                 console.error(error.response.data);
-                alert("Fallo");
+                alert(error.response.data);
             }
         });
     };
@@ -76,7 +76,7 @@ var LoginControllerModule = (function () {
             },
             onFailed: function(error){
                 console.error(error.response.data);
-                alert("Fallo");
+                alert(error.response.data);
             }
         });
         
@@ -90,7 +90,7 @@ var LoginControllerModule = (function () {
             },
             onFailed: function (error) {
                 console.error(error.response.data);
-                alert("Fallo");
+                alert(error.response.data);
             }
         });
     };
@@ -103,11 +103,12 @@ var LoginControllerModule = (function () {
                sessionStorage.setItem("usuario",JSON.stringify(user));
                sessionStorage.setItem("token",payload.data);
                sessionStorage.setItem("sesion",$('#session>option:selected').val());
+               window.location.href="canvas.html"
            
             },
             onFailed: function (error){
                console.error(error.response.data);
-                alert(error); 
+                alert(error.response.data); 
             }
         });
     };
