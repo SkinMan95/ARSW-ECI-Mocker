@@ -291,10 +291,14 @@ public class ServerMockerServices implements MockerServices {
         if (!isValidToken(session, token)) {
             throw new MockerServicesException("El token no es valido");
         }
+        
+        if (sessionObjects.get(session).containsKey(newObj.getObjId())) {
+            throw new MockerServicesException("Un objeto con el mismo ID ya existe");
+        }
 
         sessionObjects.get(session).put(newObj.getObjId(), newObj);
     }
-
+    
     @Override
     public void removeObject(int session, int objId, String token) throws MockerServicesException {
         if (!sessionObjects.containsKey(session)) {
@@ -307,6 +311,12 @@ public class ServerMockerServices implements MockerServices {
 
         if (!sessionObjects.get(session).containsKey(objId)) {
             throw new MockerServicesException("El objeto no existe");
+        }
+        
+        CanvasObject obj = sessionObjects.get(session).get(objId);
+        
+        if (obj.isSelected() && obj.getUserId() != tokens.get(token).getKey().getUserId()) {
+            throw new MockerServicesException("El objeto esta seleccionado por otro usuario");
         }
 
         sessionObjects.get(session).remove(objId);
@@ -324,6 +334,12 @@ public class ServerMockerServices implements MockerServices {
 
         if (!sessionObjects.get(session).containsKey(updObj.getObjId())) {
             throw new MockerServicesException("El objeto no existe");
+        }
+        
+        CanvasObject obj = sessionObjects.get(session).get(updObj.getObjId());
+        
+        if (obj.isSelected() && obj.getUserId() != tokens.get(token).getKey().getUserId()) {
+            throw new MockerServicesException("El objeto esta seleccionado por otro usuario");
         }
 
         sessionObjects.get(session).put(updObj.getObjId(), updObj);
