@@ -8,6 +8,7 @@ var StateSessionControllerModule = (function () {
         RestMockerController.getConnectedUsers(session, {
             onSuccess: function (payload) {
                 actualizarListaUsuarios(payload.data);
+                actualizarSesion();
             },
             onFailed: function (error) {
                 console.error(error.response.data);
@@ -22,12 +23,19 @@ var StateSessionControllerModule = (function () {
             $('#usuariosConectados')
                     .append($('<button>')
                             .attr("class", "btn")
-                            .css({"background-color":color})
-                            .css({"margin":"5px"})
-                            .css({"width":"40px","height":"40px"})
+                            .css({"background-color": color})
+                            .css({"margin": "5px"})
+                            .css({"width": "40px", "height": "40px"})
                             .attr("title", usuarios[i].userName)
                             );
         }
+    };
+
+    var actualizarSesion = function () {
+        console.log(sessionStorage.getItem("nombreSesion"));
+        $('#sesionN')
+                .css({"color":"black"})
+                .text("Sesion: " + sessionStorage.getItem("nombreSesion"));
     };
 
     return {

@@ -103,6 +103,7 @@ var LoginControllerModule = (function () {
                sessionStorage.setItem("usuario",JSON.stringify(user));
                sessionStorage.setItem("token",payload.data);
                sessionStorage.setItem("sesion",$('#session>option:selected').val());
+               sessionStorage.setItem("nombreSesion",$('#session>option:selected').text());
                window.location.href="canvas.html"
            
             },
