@@ -7,10 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="css/main.css" />
         <link rel="icon" href="http://www.escuelaing.edu.co/favicon.ico">
-        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     </head>
-    <body class="landing">
+    <body class="landing" onload="LoginControllerModule.init();">
         <div id="page-wrapper">
 
             <!-- Header -->
@@ -73,41 +71,40 @@
                 <div class="content">
                     <header>
                         <h3>LOGIN</h3>
-                        <label>Usuario:</label>
+                        <label>Usuario ( <a href="#three"> Registrar </a> ) : </label>
                         <input type=text name=username id="nombre" class="texto"> 
                         <br>
                         <label>Sesion:</label>
                         <select name="session" id="session">
                             <option value=""></option>
-                            <option value="crearNuevo">Crear uno nuevo</option>
-                            <option value="grupo1">Grupo 1</option>
-                            <option value="grupoPlaneacion">Grupo de Planeacion</option>
+                            <option value="crearNuevo">Crear sesion</option>
                         </select>
+                        <br>                      
+                        <label class="newsession">Nombre de la Sesion:</label>
+                        <input type=text name=nombreSesion id="nSesion" class="texto newsession"> 
                         <br>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="color" id="azul" value="azul" checked>
-                            <label class="form-check-label" for="azul">
-                               <span style="color:#1E90FF">Azul</span> 
-                            </label>
-                            <input class="form-check-input" type="radio" name="color" id="amarillo" value="amarillo">
-                            <label class="form-check-label" for="amarillo">
-                                <span style="color:#FFD700">Amarillo</span>
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="color" id="rojo" value="rojo" checked>
-                            <label class="form-check-label" for="rojo">
-                               <span style="color:#DC143C">Rojo</span> 
-                            </label>
-                            <input class="form-check-input" type="radio" name="color" id="verde" value="verde">
-                            <label class="form-check-label" for="verde">
-                                <span style="color:#7CFC00">Verde</span>
-                            </label>
-                        </div>
-                        <a href="canvas.html" class="button" onClick="Login()">Login</a>
+                        <button class="button newsession" id="registrar">Registrar Sesion</button>
+                        <label>Color:</label>
+                        <input class="jscolor" value="13181A" id="color">
+                        <br>
+                        <br>
+                        <button class="button" id="login">Login</button>
                     </header>
-
-
+                </div>
+                <a href="#three" class="goto-next scrolly">Next</a>
+            </section>
+            
+            <!-- Three -->
+            <section id="three" class="spotlight style2 left">
+                <span class="image fit main"><img src="images/fondoLogin.jpg" alt="" /></span>
+                <div class="content">
+                    <header>
+                        <h3>REGISTRO</h3>
+                        <label>Nombre de Usuario:</label>
+                        <input type=text name=username id="nombre" class="texto">
+                        <br>
+                        <button class="button" id="registrarUsuario">Registrar</button>
+                    </header> 
                 </div>
                 <a href="#footer" class="goto-next scrolly">Next</a>
             </section>
@@ -131,7 +128,9 @@
         </div>
 
         <!-- Scripts -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>      
         <script src="js/jquery.min.js"></script>
+        <script src="js/jscolor.js"></script>
         <script src="js/jquery.scrolly.min.js"></script>
         <script src="js/jquery.dropotron.min.js"></script>
         <script src="js/jquery.scrollex.min.js"></script>
@@ -139,7 +138,9 @@
         <script src="js/util.js"></script>
         <script src="js/main.js"></script>
         <script src="/webjars/jquery/jquery.min.js"></script>
-        <script src="js/app.js"></script>
+        <script src="js/LoginRestController.js"></script>
+        <script src="js/login.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
 

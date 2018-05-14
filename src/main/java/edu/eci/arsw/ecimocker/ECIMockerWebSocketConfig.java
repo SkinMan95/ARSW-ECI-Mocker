@@ -32,14 +32,14 @@ public class ECIMockerWebSocketConfig extends AbstractWebSocketMessageBrokerConf
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
+        // TODO colocar los reles
         config.enableSimpleBroker("/topic");
         config.setApplicationDestinationPrefixes("/app");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/stompendpoint").withSockJS();
-
+        registry.addEndpoint("/stompendpoint").setAllowedOrigins("*").withSockJS();
     }
 
 }
