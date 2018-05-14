@@ -24,9 +24,10 @@ import org.springframework.stereotype.Service;
 public class ServerMockerServices implements MockerServices {
 
     public static final int TOKEN_BYTE_SIZE = 32; // 256 bits
+    public static final String TOKEN_DICT = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-    private static AtomicInteger sessionsIDS = new AtomicInteger(0);
-    private static AtomicInteger userIDS = new AtomicInteger(0);
+    private static final AtomicInteger SESSIONS_IDS = new AtomicInteger(0);
+    private static final AtomicInteger USER_IDS = new AtomicInteger(0);
 
     private static final Random RANDOM = new Random();
 
@@ -54,7 +55,7 @@ public class ServerMockerServices implements MockerServices {
             throw new MockerServicesException("Ya existe una sesion con el mismo nombre");
         }
 
-        int id = sessionsIDS.getAndAdd(1);
+        int id = SESSIONS_IDS.getAndAdd(1);
         sessions.put(sessionName, new Session(id, sessionName));
         sessionObjects.put(id, new ConcurrentHashMap<>());
         return id;
@@ -130,7 +131,7 @@ public class ServerMockerServices implements MockerServices {
             throw new MockerServicesException("El usuario ya existe");
         }
 
-        newUser.setUserId(userIDS.getAndAdd(1));
+        newUser.setUserId(USER_IDS.getAndAdd(1));
         users.put(newUser.getUserName(), newUser);
     }
 
@@ -185,14 +186,14 @@ public class ServerMockerServices implements MockerServices {
     }
 
     private String generateNewToken() { // TODO: cambiar a alfanumerico
-        String res = null;
+        StringBuilder res = new StringBuilder();
         do {
-            byte[] tkBytes = new byte[TOKEN_BYTE_SIZE];
-            RANDOM.nextBytes(tkBytes);
-            res = new String(tkBytes);
-        } while (tokensUsed.contains(res));
+            for (int i = 0; i < TOKEN_BYTE_SIZE; i++) {
+                res.append(TOKEN_DICT.charAt(RANDOM.nextInt(TOKEN_DICT.length())));
+            }
+        } while (tokensUsed.contains(res.toString()));
 
-        return res;
+        return res.toString();
     }
 
     @Override
