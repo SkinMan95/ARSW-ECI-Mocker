@@ -28,13 +28,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/mocker")
 public class MockerAPIServices {
 
-    public static final boolean log = true;
+    public static final boolean LOGGING = true;
 
     @Autowired
     MockerServices services;
 
     private void log(String str) {
-        if (log) {
+        if (LOGGING) {
             System.out.println(str);
         }
     }
