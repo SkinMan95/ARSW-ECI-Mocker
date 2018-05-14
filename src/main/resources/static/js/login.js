@@ -32,7 +32,7 @@ var LoginControllerModule = (function () {
         });
         
         $('#registrarUsuario').click(function(){
-            var user = {userName: $('#nombre').text(), userId: 0, color: $('#color').text()}
+            var user = {userName: $('#nombreR').text(), userId: 0, color: $('#color').text()}
             nuevoUsuario(user);
         })
         
@@ -45,7 +45,7 @@ var LoginControllerModule = (function () {
                 actualizarLista();
             },
             onFailed: function (error) {
-                console.error(error);
+                console.error(error.response.data);
                 alert("Fallo");
             }
         });
@@ -75,7 +75,7 @@ var LoginControllerModule = (function () {
                 console.log(payload);
             },
             onFailed: function(error){
-                console.error(error);
+                console.error(error.response.data);
                 alert("Fallo");
             }
         });
@@ -88,8 +88,8 @@ var LoginControllerModule = (function () {
                 console.log(payload.data);
                 alert("Se registro satisfactoriamente");
             },
-            onFailed: function (err) {
-                console.error(err);
+            onFailed: function (error) {
+                console.error(error.response.data);
                 alert("Fallo");
             }
         });
@@ -106,7 +106,7 @@ var LoginControllerModule = (function () {
            
             },
             onFailed: function (error){
-               console.error(error);
+               console.error(error.response.data);
                 alert(error); 
             }
         });
