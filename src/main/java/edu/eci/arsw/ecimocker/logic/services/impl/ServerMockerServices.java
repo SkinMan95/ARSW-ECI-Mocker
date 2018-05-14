@@ -43,6 +43,10 @@ public class ServerMockerServices implements MockerServices {
 
     @Override
     public int addNewSession(String sessionName) throws MockerServicesException {
+        if (sessionName == null) {
+            throw new NullPointerException("sessionName es null");
+        }
+        
         if (sessions.containsKey(sessionName)) {
             throw new MockerServicesException("Ya existe una sesion con el mismo nombre");
         }
@@ -79,6 +83,10 @@ public class ServerMockerServices implements MockerServices {
     }
 
     private boolean sessionHasUsers(Session s) {
+        if (s == null) {
+            throw new NullPointerException("session es null");
+        }
+        
         List<Pair<User, Session>> rel = new ArrayList<>(tokens.values());
 
         boolean r = false;
@@ -92,6 +100,10 @@ public class ServerMockerServices implements MockerServices {
     }
 
     private boolean userExists(User u) {
+        if (u == null) {
+            throw new NullPointerException("user es null");
+        }
+        
         List<User> us = new ArrayList<>(users.values());
         boolean res = false;
 
@@ -106,6 +118,10 @@ public class ServerMockerServices implements MockerServices {
 
     @Override
     public void registerUser(User newUser) throws MockerServicesException {
+        if (newUser == null) {
+            throw new NullPointerException("newUser es null");
+        }
+        
         if (userExists(newUser)) {
             throw new MockerServicesException("El usuario ya existe");
         }
@@ -129,6 +145,10 @@ public class ServerMockerServices implements MockerServices {
     }
 
     private String getToken(int session, User user) {
+        if (user == null) {
+            throw new NullPointerException("user es null");
+        }
+        
         String res = null;
 
         for (String token : tokens.keySet()) {
@@ -173,6 +193,10 @@ public class ServerMockerServices implements MockerServices {
 
     @Override
     public String getNewToken(int session, User user) throws MockerServicesException {
+        if (user == null) {
+            throw new NullPointerException("user es null");
+        }
+        
         if (!sessionExists(session)) {
             throw new MockerServicesException("La sesion no existe.");
         }
@@ -184,7 +208,9 @@ public class ServerMockerServices implements MockerServices {
         String tk = getToken(session, user);
         Pair<User, Session> tkVal = (tk != null) ? tokens.get(tk) : new Pair<>(user, getSession(session));
 
-        tokens.remove(tk);
+        if (tk != null) {
+            tokens.remove(tk);
+        }
 
         String newToken;
         do {
@@ -197,6 +223,10 @@ public class ServerMockerServices implements MockerServices {
 
     @Override
     public boolean isValidToken(int session, String token) throws MockerServicesException {
+        if (token == null) {
+            throw new NullPointerException("token es null");
+        }
+        
         if (!sessionExists(session)) {
             throw new MockerServicesException("La sesion " + session + " no existe");
         }
@@ -210,6 +240,10 @@ public class ServerMockerServices implements MockerServices {
 
     @Override
     public void dissociateUserFromSession(String token) throws MockerServicesException {
+        if (token == null) {
+            throw new NullPointerException("token es null");
+        }
+        
         if (!tokens.containsKey(token)) {
             throw new MockerServicesException("El token no existe");
         }
