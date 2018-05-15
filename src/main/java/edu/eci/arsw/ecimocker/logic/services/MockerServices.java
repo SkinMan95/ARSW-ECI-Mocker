@@ -124,7 +124,8 @@ public interface MockerServices {
      * @param objId id del objeto
      * @param token token de quien intenta remover el objeto
      * @throws MockerServicesException el objeto no existe en la sesion O la
-     * sesion no existe O el token no es valido
+     * sesion no existe O el token no es valido O el objeto se encuentra
+     * seleccinado por otro usuario
      */
     void removeObject(int session, int objId, String token) throws MockerServicesException;
 
@@ -135,7 +136,8 @@ public interface MockerServices {
      * @param updObj objeto actualizado
      * @param token token de quien intenta actualizar
      * @throws MockerServicesException no existe objeto en la sesion que
-     * corresponda al objeto O el token es invalido O no existe la sesion
+     * corresponda al objeto O el token es invalido O no existe la sesion O el
+     * objeto se encuentra seleccionado por otro usuario
      */
     void updateObject(int session, CanvasObject updObj, String token) throws MockerServicesException;
 }

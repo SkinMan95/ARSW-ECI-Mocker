@@ -32,9 +32,9 @@ var LoginControllerModule = (function () {
         });
         
         $('#registrarUsuario').click(function(){
-            var user = {userName: $('#nombre').text(), userId: 0, color: $('#color').text()}
+            var user = {userName: $('#nombreR').val(), userId: 0, color: $('#color').val()};
             nuevoUsuario(user);
-        })
+        });
         
         actualizarLista();
     };
@@ -45,8 +45,8 @@ var LoginControllerModule = (function () {
                 actualizarLista();
             },
             onFailed: function (error) {
-                console.error(error);
-                alert("Fallo");
+                console.error(error.response.data);
+                alert(error.response.data);
             }
         });
     };
@@ -75,8 +75,8 @@ var LoginControllerModule = (function () {
                 console.log(payload);
             },
             onFailed: function(error){
-                console.error(error);
-                alert("Fallo");
+                console.error(error.response.data);
+                alert(error.response.data);
             }
         });
         
@@ -88,29 +88,31 @@ var LoginControllerModule = (function () {
                 console.log(payload.data);
                 alert("Se registro satisfactoriamente");
             },
-            onFailed: function (err) {
-                console.error(err);
-                alert("Fallo");
+            onFailed: function (error) {
+                console.error(error.response.data);
+                alert(error.response.data);
             }
         });
     };
     
     var tokenUsuario = function (){
-        var user = {userName: $('#nombre').val(), userId: 0, color: $('#color').val()}
+        var user = {userName: $('#nombre').val(), userId: 0, color: $('#color').val()};
         var sesion = $('#session>option:selected').val();
         LoginRestController.tokenUser(sesion, user,{
             onSuccess: function(payload){
                sessionStorage.setItem("usuario",JSON.stringify(user));
                sessionStorage.setItem("token",payload.data);
                sessionStorage.setItem("sesion",$('#session>option:selected').val());
+               sessionStorage.setItem("nombreSesion",$('#session>option:selected').text());
+               window.location.href="canvas.html"
            
             },
             onFailed: function (error){
-               console.error(error);
-                alert(error); 
+               console.error(error.response.data);
+                alert(error.response.data); 
             }
         });
-    }
+    };
     
     
     
@@ -118,7 +120,7 @@ var LoginControllerModule = (function () {
 
     return {
         init: init
-    }
+    };
 
 })();
 

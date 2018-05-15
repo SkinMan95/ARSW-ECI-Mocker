@@ -1,76 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="http://www.escuelaing.edu.co/favicon.ico">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="http://www.escuelaing.edu.co/favicon.ico">
 
-    <title>ECI ARSW - Mocker</title>
+        <title>ECI ARSW - Mocker</title>
 
-    <!-- Bootstrap core CSS -->
-    <!--<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">-->
+        <!-- Bootstrap core CSS -->
+        <!--<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">-->
 
-    <!-- Custom styles for this template -->
-    <!--<link href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css" rel="stylesheet">-->
-    <!--<link href="table_styles.css" rel="stylesheet">-->
-    <link href="hhttps://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/session.css">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <!--<link href="styles.css" rel="stylesheet"> --><!-- icons -->
-  </head>
-  <body class="body" onload="MockerController.init();">
-    
-    <header class="header">
-      <div class="left-header">
-          <img class="myImageUser" src="./images/mini.png" width="100"/>
-          <h1 class="myNameUser">My Name</h1>
-      </div>
-      <div class="right-header">
-          <h3>Connected Users</h3>
-          <img src="./images/mini.png" width="50">
-          <img src="./images/mini.png" width="50">
-          <img src="./images/mini.png" width="50">
-      </div>
-      <nav class="menu">
-        <ul>
-          <li>
-            <h3><a href="index.html">Leave Session</a></h3>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <div class="main">
-      <div id="toolsSection" class="toolsCanvas">
-      	<span class="toolBtns icon-compass" id="selectionTool"></span>
-      	<span class="toolBtns icon-undo" id="undoTool"></span>
-      	<span class="toolBtns icon-redo" id="redoTool"></span>
-      	<span class="toolBtns icon-font-size" id="textTool"></span>
-      	<span class="toolBtns icon-pencil2" id="pencilTool"></span>
-      	<span class="toolBtns icon-eyedropper" id="pickerTool"></span>
-      	<span class="toolBtns icon-bin" id="garbageTool"></span>
-      	<span class="toolBtns icon-zoom-in" id="zoomTool"></span>
-      	<span class="toolBtns icon-star-empty" id="objectTool"></span> <!-- object = star -->
-      </div>
-      <canvas id="drawingCanvas" class="drawingCanvas"></canvas>
-    </div>
+        <!-- Custom styles for this template -->
+        <!--<link href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css" rel="stylesheet">-->
+        <!--<link href="table_styles.css" rel="stylesheet">-->
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./css/session.css">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <!--<link href="styles.css" rel="stylesheet"> --><!-- icons -->
+    </head>
+    <body class="body" onload="MockerController.init();">
 
-    <footer/>
+        <header class="header">
+            <div class="left-header">
+                <img class="myImageUser" src="./images/LOGO1.PNG" width="550"/>
+            </div>
+            <div class="right-header">
+                <h3>Usuarios Conectados</h3>
+                <div id="usuariosConectados">
+                </div>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li> <label id="sesionN">
+                        </label>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-primary" id="abandonarS">Abandonar Sesion</button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="main">
+            <div id="toolsSection" class="toolsCanvas">
+                <span class="toolBtns icon-compass" id="selectionTool"></span>
+                <span class="toolBtns icon-undo" id="undoTool"></span>
+                <span class="toolBtns icon-redo" id="redoTool"></span>
+                <span class="toolBtns icon-font-size" id="textTool"></span>
+                <span class="toolBtns icon-pencil2" id="pencilTool"></span>
+                <span class="toolBtns icon-eyedropper" id="pickerTool"></span>
+                <span class="toolBtns icon-bin" id="garbageTool"></span>
+                <span class="toolBtns icon-zoom-in" id="zoomTool"></span>
+                <span class="toolBtns icon-star-empty" id="objectTool"></span> <!-- object = star -->
+            </div>
+            <canvas id="drawingCanvas" class="drawingCanvas"></canvas>
+        </div>
 
-    <!-- Bootstrap core JavaScript
-	 ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"><\/script>')</script>
-      <!--<script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
-	  <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>-->
-      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-      <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-      <script src="js/fabric.min.js"></script>
-      <script src="js/RestMockerController.js"></script>
-      <script src="js/MockerController.js"></script>
-  </body>
+        <footer/>
+
+        <!-- Bootstrap core JavaScript
+             ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"><\/script>')</script>
+        <!--<script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
+            <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>-->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="js/fabric.min.js"></script>
+        <script src="js/stateSession.js"></script>
+        <script src="js/RestMockerController.js"></script>
+        <script src="js/MockerController.js"></script>
+    </body>
 </html>
