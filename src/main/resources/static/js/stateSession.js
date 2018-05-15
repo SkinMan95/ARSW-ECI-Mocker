@@ -67,7 +67,7 @@ var StateSessionControllerModule = (function () {
         RestMockerController.dissociateUser(token,{
              onSuccess: function (payload) {
                  console.window.alert("Se ha desconectado de la sesion: " + session);
-                 window.location.href="index.html"
+                 window.location.href = "index.html";
             },
             onFailed: function (error) {
                 console.error(error.response.data);
@@ -78,6 +78,6 @@ var StateSessionControllerModule = (function () {
 
     return {
         init: init
-    }
+    };
 })();
 

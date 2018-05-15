@@ -71,7 +71,7 @@ var RestMockerController = (function () {
     };
 
     var dissociateUser = function (token, callback) {
-        axios.delete(SERVER_URL + "/mocker/users", token)
+        axios.delete(SERVER_URL + "/mocker/users/" + token)
                 .then(callback.onSuccess)
                 .catch(callback.onFailed);
     };

@@ -116,8 +116,8 @@ public class MockerAPIServices {
         }
     }
 
-    @DeleteMapping("/users")
-    public ResponseEntity<?> dissociateUserFromSession(@RequestBody String token) {
+    @DeleteMapping("/users/{token}")
+    public ResponseEntity<?> dissociateUserFromSession(@PathVariable("token") String token) {
         try {
             log("intenta desasociarse el usuario de la sesion con el token \'" + token + "\'");
             services.dissociateUserFromSession(token);
