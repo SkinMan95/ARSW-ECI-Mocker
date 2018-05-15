@@ -1,6 +1,7 @@
 var StateSessionControllerModule = (function () {
 
     var session = null;
+    
      
 
     var init = function () {
@@ -46,6 +47,7 @@ var StateSessionControllerModule = (function () {
             $('#usuariosConectados')
                     .append($('<button>')
                             .attr("class", "btn")
+                            .css({"border": "1px solid black"})
                             .css({"background-color": color})
                             .css({"margin": "5px"})
                             .css({"width": "40px", "height": "40px"})
@@ -66,12 +68,12 @@ var StateSessionControllerModule = (function () {
         console.log(token);
         RestMockerController.dissociateUser(token,{
              onSuccess: function (payload) {
-                 console.window.alert("Se ha desconectado de la sesion: " + session);
+                 alert("Se ha desconectado de la sesion: " + sessionStorage.getItem("nombreSesion"));
                  window.location.href = "index.html";
             },
             onFailed: function (error) {
-                console.error(error.response.data);
-                alert(error.response.data);
+                console.error(error);
+                alert(error);
             }
         });
     };
