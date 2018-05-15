@@ -5,7 +5,7 @@ var StateSessionControllerModule = (function () {
 
     var init = function () {
         
-        var session = Number(sessionStorage.getItem("sesion"));
+        session = Number(sessionStorage.getItem("sesion"));
         
         console.info('Connecting...');
         var socket = new SockJS('/stompendpoint');
@@ -20,6 +20,11 @@ var StateSessionControllerModule = (function () {
             }
                     );
         });
+        
+        $('#abandonarS').click(function(){
+            eliminarUsuarioDeSesion();
+        }
+                );
 
 
        
@@ -54,6 +59,21 @@ var StateSessionControllerModule = (function () {
         $('#sesionN')
                 .css({"color": "black", "font-size": "20px"})
                 .text("Sesion: " + sessionStorage.getItem("nombreSesion"));
+    };
+    
+    var eliminarUsuarioDeSesion = function (){
+        var token = sessionStorage.getItem("token");
+        console.log(token);
+        RestMockerController.dissociateUser(token,{
+             onSuccess: function (payload) {
+                 console.window.alert("Se ha desconectado de la sesion: " + session);
+                 window.location.href="index.html"
+            },
+            onFailed: function (error) {
+                console.error(error.response.data);
+                alert(error.response.data);
+            }
+        });
     };
 
     return {

@@ -70,6 +70,12 @@ var RestMockerController = (function () {
                 .catch(callback.onFailed);
     };
 
+    var dissociateUser = function (token, callback) {
+        axios.delete(SERVER_URL + "/mocker/users", token)
+                .then(callback.onSuccess)
+                .catch(callback.onFailed);
+    };
+
     return {
         testing: TESTING,
         init: init,
@@ -77,7 +83,8 @@ var RestMockerController = (function () {
         disconnectFromServer: disconnectFromServer,
         publishInTopic: publishInTopic,
         subscribeToTopic: subscribeToTopic,
-        getConnectedUsers : getConnectedUsers
+        getConnectedUsers: getConnectedUsers,
+        dissociateUser: dissociateUser
     };
 
 })();
