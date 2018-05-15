@@ -1,10 +1,28 @@
 var StateSessionControllerModule = (function () {
 
     var session = null;
+     
 
     var init = function () {
-        // console.assert(session != null);
+        
         var session = Number(sessionStorage.getItem("sesion"));
+        
+        console.info('Connecting...');
+        var socket = new SockJS('/stompendpoint');
+        stompClient = Stomp.over(socket);
+
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+
+            stompClient.subscribe('/topic/' + session + '/users', function(eventbody){
+                var usuarios = JSON.parse(eventbody.body);
+                actualizarListaUsuarios(usuarios);
+            }
+                    );
+        });
+
+
+       
         RestMockerController.getConnectedUsers(session, {
             onSuccess: function (payload) {
                 actualizarListaUsuarios(payload.data);
@@ -34,7 +52,7 @@ var StateSessionControllerModule = (function () {
     var actualizarSesion = function () {
         console.log(sessionStorage.getItem("nombreSesion"));
         $('#sesionN')
-                .css({"color":"black"})
+                .css({"color": "black", "font-size": "20px"})
                 .text("Sesion: " + sessionStorage.getItem("nombreSesion"));
     };
 
