@@ -134,18 +134,19 @@ var MockerController = (function () {
     
     const init = function() {
         StateSessionControllerModule.init();
-	initCanvas();
-	initTools();
-	
-	console.assert(RestMockerController !== undefined);
-	RestMockerController.init({
-	    onSuccess: function () {
-		connectToServer();
-	    },
-	    onFailed: function () {
-		showErrorMessage("Rest controller intialization failed");
-	    }
-	});
+        ActionTools.init();
+		initCanvas();
+		initTools();
+		
+		console.assert(RestMockerController !== undefined);
+		RestMockerController.init({
+		    onSuccess: function () {
+			connectToServer();
+		    },
+		    onFailed: function () {
+			showErrorMessage("Rest controller intialization failed");
+		    }
+		});
 
 	myPolygons = [];
 
