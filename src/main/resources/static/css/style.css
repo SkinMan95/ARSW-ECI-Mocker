@@ -56,11 +56,31 @@
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+#triangle {
+    background-image: url("/images/triangle.png");
+    background-size: 100px 130px;
+    height: 134px;  
+    width: 104px;
+}
+
+#square {
+    background-image: url("/images/square.png");
+    background-size: 100px 130px;
+    height: 134px;  
+    width: 104px;
+}
+
+#circle {
+    background-image: url("/images/circle.png");
+    background-size: 100px 130px;
+    height: 134px;  
+    width: 104px;
 }
 
 .icon-pencil2:before {
