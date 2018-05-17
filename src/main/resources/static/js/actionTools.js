@@ -29,7 +29,21 @@ var ActionTools = (function () {
 			}
 		});
 
-		
+		$('#square').click(function () {
+			var rect = new fabric.Rect({
+    	    	left: 100,
+    	    	top: 100,
+    	    	fill: 'red',
+    	    	width: 20,
+    	    	height: 20
+    	    });
+
+    	    var canvaces = document.getElementById("drawingCanvas");
+            console.log(rect);
+    	    canvaces.main.add(rect);
+            console.log(rect);
+            modal.style.display = "none";
+		});
 	};
 
 	return {
