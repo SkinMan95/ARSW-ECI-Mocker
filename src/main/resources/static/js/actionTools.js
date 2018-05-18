@@ -33,16 +33,46 @@ var ActionTools = (function () {
 			var rect = new fabric.Rect({
     	    	left: 100,
     	    	top: 100,
-    	    	fill: 'red',
+    	    	fill: document.getElementById("colorPicker").value,
     	    	width: 20,
     	    	height: 20
     	    });
 
-    	    var canvaces = document.getElementById("drawingCanvas");
+			console.log("Llama la funcion del controler");
+    	    var canvaces = MockerController.getCanvas();
             console.log(rect);
-    	    canvaces.main.add(rect);
+    	    canvaces.add(rect);
             console.log(rect);
-            modal.style.display = "none";
+            document.getElementById('myModal').style.display = "none";
+		});
+
+		$('#circle').click(function () {
+			var circ = new fabric.Circle({ 
+				radius: 30, 
+				fill: document.getElementById("colorPicker").value, 
+				top: 100, 
+				left: 100 
+			});
+
+			var canvaces = MockerController.getCanvas();
+    	    canvaces.add(circ);
+            console.log(circ);
+            document.getElementById('myModal').style.display = "none";
+		});
+
+		$('#triangle').click(function () {
+			var triang = new fabric.Triangle({ 
+				top: 300, 
+				left: 210, 
+				width: 100, 
+				height: 100, 
+				fill: document.getElementById("colorPicker").value 
+			});
+
+			var canvaces = MockerController.getCanvas();
+    	    canvaces.add(triang);
+            console.log(triang);
+            document.getElementById('myModal').style.display = "none";
 		});
 	};
 
