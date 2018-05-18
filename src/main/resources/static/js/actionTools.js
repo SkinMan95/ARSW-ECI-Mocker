@@ -44,6 +44,7 @@ var ActionTools = (function () {
     	    canvaces.add(rect);
             console.log(rect);
             document.getElementById('myModal').style.display = "none";
+            $("#selectionTool").click();
 		});
 
 		$('#circle').click(function () {
@@ -58,6 +59,7 @@ var ActionTools = (function () {
     	    canvaces.add(circ);
             console.log(circ);
             document.getElementById('myModal').style.display = "none";
+            $("#selectionTool").click();
 		});
 
 		$('#triangle').click(function () {
@@ -73,6 +75,7 @@ var ActionTools = (function () {
     	    canvaces.add(triang);
             console.log(triang);
             document.getElementById('myModal').style.display = "none";
+            $("#selectionTool").click();
 		});
 	};
 

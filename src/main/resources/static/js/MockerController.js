@@ -154,7 +154,7 @@ var MockerController = (function () {
     };
 
     const getCanvas = function() {
-    	console.log("Pasa!");
+    	//console.log("Pasa!");
     	return canvaces.main;
     };
 
