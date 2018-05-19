@@ -12,6 +12,16 @@ var ActionTools = (function () {
 	const textTool = function() {
 		$("#textTool").click(function() {
 			lockOptions(true);
+			var canvas = MockerController.getCanvas();
+			var text = new fabric.Textbox('Texto', {
+				left: 100,
+				top: 150,
+				fill: '#000000',
+				strokeWidth: 2,
+				stroke: "#000000",
+			});
+			canvas.add(text);
+			$("#selectionTool").click();
 		});
 	};
 
@@ -28,6 +38,7 @@ var ActionTools = (function () {
 			var canvas = MockerController.getCanvas();
 			console.log("Borra elementos seleccionados");
 			canvas.remove(canvas.getActiveObject());
+			$("#selectionTool").click();
 		});
 	};
 
@@ -38,14 +49,17 @@ var ActionTools = (function () {
 			canvas.forEachObject(function(o){
 				o.lockScalingX = o.lockScalingY = false;
 			});
-			canvas.deactivateAll().renderAll();
+			//canvas.deactivateAll().renderAll();
 		});
 	};
 
 	const selectionTool = function () {
 		$("#selectionTool").click(function() {
 			lockOptions(false);
-			o.lockScalingX = o.lockScalingY = true;
+			var canvas = MockerController.getCanvas();
+			canvas.forEachObject(function(o){
+				o.lockScalingX = o.lockScalingY = true;
+			});
 		});
 	};
 
@@ -105,8 +119,8 @@ var ActionTools = (function () {
     	    lockOptions(true);
             console.log(rect);
             document.getElementById('myModal').style.display = "none";
-            canvas.deactivateAll().renderAll();
-            selectionTool();
+            //canvas.deactivateAll().renderAll();
+            $("#selectionTool").click();
 		});
 
 		$('#circle').click(function () {
@@ -123,8 +137,8 @@ var ActionTools = (function () {
     	    lockOptions(true);
             console.log(circ);
             document.getElementById('myModal').style.display = "none";
-            canvas.deactivateAll().renderAll();
-            selectionTool();
+            //canvas.deactivateAll().renderAll();
+            $("#selectionTool").click();
 		});
 
 		$('#triangle').click(function () {
@@ -142,8 +156,8 @@ var ActionTools = (function () {
     	    lockOptions(true);
             console.log(triang);
             document.getElementById('myModal').style.display = "none";
-            canvas.deactivateAll().renderAll();
-            selectionTool();
+            //canvas.deactivateAll().renderAll();
+            $("#selectionTool").click();
 		});
 	};
 
