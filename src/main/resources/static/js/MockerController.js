@@ -99,7 +99,7 @@ var MockerController = (function () {
     	    backgroundColor: CANVAS_BACKGROUND_COLOR,
     	    selectionLineWidth: 2
     	});
-    	canvaces.main.selection = false;
+    	canvaces.main.selection = false; //Selección multiple lo desactiva
     	
     	var clickHandler = function(e) {
     		console.log("captura evento");
