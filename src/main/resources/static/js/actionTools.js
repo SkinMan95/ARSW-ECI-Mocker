@@ -34,12 +34,18 @@ var ActionTools = (function () {
 	const zoomTool = function() {
 		$("#zoomTool").click(function() {
 			lockOptions(true);
+			var canvas = MockerController.getCanvas();
+			canvas.forEachObject(function(o){
+				o.lockScalingX = o.lockScalingY = false;
+			});
+			canvas.deactivateAll().renderAll();
 		});
 	};
 
 	const selectionTool = function () {
 		$("#selectionTool").click(function() {
 			lockOptions(false);
+			o.lockScalingX = o.lockScalingY = true;
 		});
 	};
 
@@ -47,6 +53,7 @@ var ActionTools = (function () {
 		console.log("Boquea rotacion y movimiento");
 		var canvas = MockerController.getCanvas();
 		canvas.forEachObject(function(o){ 
+			o.lockScalingX = o.lockScalingY = val;
 			o.lockRotation = val;
 			o.lockMovementY = o.lockMovementX = val;
 		});
@@ -98,6 +105,7 @@ var ActionTools = (function () {
     	    lockOptions(true);
             console.log(rect);
             document.getElementById('myModal').style.display = "none";
+            canvas.deactivateAll().renderAll();
             selectionTool();
 		});
 
@@ -115,6 +123,7 @@ var ActionTools = (function () {
     	    lockOptions(true);
             console.log(circ);
             document.getElementById('myModal').style.display = "none";
+            canvas.deactivateAll().renderAll();
             selectionTool();
 		});
 
@@ -133,6 +142,7 @@ var ActionTools = (function () {
     	    lockOptions(true);
             console.log(triang);
             document.getElementById('myModal').style.display = "none";
+            canvas.deactivateAll().renderAll();
             selectionTool();
 		});
 	};
