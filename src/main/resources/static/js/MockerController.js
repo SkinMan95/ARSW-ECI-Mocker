@@ -87,19 +87,28 @@ var MockerController = (function () {
     };
     
     var initCanvas = function () {
-	// main canvas
-	var width = $(`#${CANVAS_MAIN_NAME}`).css('width');
-	var height = $(`#${CANVAS_MAIN_NAME}`).css('height');
+		// main canvas
+		var width = $(`#${CANVAS_MAIN_NAME}`).css('width');
+		var height = $(`#${CANVAS_MAIN_NAME}`).css('height');
 
-	$(`#${CANVAS_MAIN_NAME}`)
-	    .attr('width', width)
-	    .attr('height', height);
+		$(`#${CANVAS_MAIN_NAME}`)
+		    .attr('width', width)
+		    .attr('height', height);
 	
     	canvaces.main  = new fabric.Canvas(CANVAS_MAIN_NAME, {
     	    backgroundColor: CANVAS_BACKGROUND_COLOR,
     	    selectionLineWidth: 2
     	});
     	canvaces.main.selection = false;
+    	
+    	var clickHandler = function(e) {
+    		console.log("captura evento");
+    		console.log(e.target);
+    	};
+
+    	canvaces.main.on({
+    		'mouse:down' : clickHandler
+    	});
     };
 
     var initTools = function () {
@@ -159,13 +168,21 @@ var MockerController = (function () {
     	return canvaces.main;
     };
 
+    const getSelectedTool = function() {
+    	return selectedTool;
+    };
+
+    const setSelectedTool = function(nt) {
+    	selectedTool = nt;
+    };
+
     const connectToServer = function() {
 	RestMockerController.registerToServer();
     };
 
     const addObject = function (obj) {
-	console.assert(obj instanceof Polygon);
-	// TODO
+		console.assert(obj instanceof Polygon);
+		// TODO
     };
 
     const removeObject = function (objId) {
@@ -184,7 +201,8 @@ var MockerController = (function () {
 	addObject : addObject,
 	removeObject : removeObject,
 	selectObject : selectObject,
-	getCanvas : getCanvas
+	getCanvas : getCanvas,
+	getSelectedTool : getSelectedTool
     };
 })();
 

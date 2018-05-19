@@ -18,12 +18,16 @@ var ActionTools = (function () {
 	const pickerTool = function() {
 		$("#pickerTool").click(function() {
 			lockOptions(true);
+			//Se implementa cuando las figuras estén sincronizadas con el servidor
 		});
 	}
 
 	const garbageTool = function() {
-		$("garbageTool").click(function() {
+		$("#garbageTool").click(function() {
 			lockOptions(true);
+			var canvas = MockerController.getCanvas();
+			console.log("Borra elementos seleccionados");
+			canvas.remove(canvas.getActiveObject());
 		});
 	};
 
@@ -37,7 +41,6 @@ var ActionTools = (function () {
 		$("#selectionTool").click(function() {
 			lockOptions(false);
 		});
-
 	};
 
 	const lockOptions = function (val) {
