@@ -28,7 +28,7 @@ var ActionTools = (function () {
 	const pickerTool = function() {
 		$("#pickerTool").click(function() {
 			lockOptions(true);
-			//Se implementa cuando las figuras estén sincronizadas con el servidor
+			$("#fontSel")[0].click();
 		});
 	}
 
