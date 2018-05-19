@@ -99,6 +99,7 @@ var MockerController = (function () {
     	    backgroundColor: CANVAS_BACKGROUND_COLOR,
     	    selectionLineWidth: 2
     	});
+    	canvaces.main.selection = false;
     };
 
     var initTools = function () {

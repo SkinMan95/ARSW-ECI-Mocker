@@ -1,6 +1,55 @@
 var ActionTools = (function () {
 
 	var init = function () {
+		createObjTool();
+		selectionTool();
+		zoomTool();
+		textTool();
+		pickerTool();
+		garbageTool();
+	};
+
+	const textTool = function() {
+		$("#textTool").click(function() {
+			lockOptions(true);
+		});
+	};
+
+	const pickerTool = function() {
+		$("#pickerTool").click(function() {
+			lockOptions(true);
+		});
+	}
+
+	const garbageTool = function() {
+		$("garbageTool").click(function() {
+			lockOptions(true);
+		});
+	};
+
+	const zoomTool = function() {
+		$("#zoomTool").click(function() {
+			lockOptions(true);
+		});
+	};
+
+	const selectionTool = function () {
+		$("#selectionTool").click(function() {
+			lockOptions(false);
+		});
+
+	};
+
+	const lockOptions = function (val) {
+		console.log("Boquea rotacion y movimiento");
+		var canvas = MockerController.getCanvas();
+		canvas.forEachObject(function(o){ 
+			o.lockRotation = val;
+			o.lockMovementY = o.lockMovementX = val;
+		});
+	};
+ 
+	const createObjTool = function () {
 		$('#objectTool').click(function() {
 			// Get the modal
 			var modal = document.getElementById('myModal');
@@ -38,13 +87,15 @@ var ActionTools = (function () {
     	    	height: 20
     	    });
 
+			var canvas = MockerController.getCanvas();
 			console.log("Llama la funcion del controler");
-    	    var canvaces = MockerController.getCanvas();
             console.log(rect);
-    	    canvaces.add(rect);
+            rect.lockScalingX = rect.lockScalingY = true;
+    	    canvas.add(rect);
+    	    lockOptions(true);
             console.log(rect);
             document.getElementById('myModal').style.display = "none";
-            $("#selectionTool").click();
+            selectionTool();
 		});
 
 		$('#circle').click(function () {
@@ -55,11 +106,13 @@ var ActionTools = (function () {
 				left: 100 
 			});
 
-			var canvaces = MockerController.getCanvas();
-    	    canvaces.add(circ);
+			var canvas = MockerController.getCanvas();
+			circ.lockScalingX = circ.lockScalingY = true;
+    	    canvas.add(circ);
+    	    lockOptions(true);
             console.log(circ);
             document.getElementById('myModal').style.display = "none";
-            $("#selectionTool").click();
+            selectionTool();
 		});
 
 		$('#triangle').click(function () {
@@ -71,11 +124,13 @@ var ActionTools = (function () {
 				fill: document.getElementById("colorPicker").value 
 			});
 
-			var canvaces = MockerController.getCanvas();
-    	    canvaces.add(triang);
+			var canvas = MockerController.getCanvas();
+			triang.lockScalingX = triang.lockScalingY = true;
+    	    canvas.add(triang);
+    	    lockOptions(true);
             console.log(triang);
             document.getElementById('myModal').style.display = "none";
-            $("#selectionTool").click();
+            selectionTool();
 		});
 	};
 
