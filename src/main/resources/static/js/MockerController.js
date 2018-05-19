@@ -87,17 +87,27 @@ var MockerController = (function () {
     };
     
     var initCanvas = function () {
-	// main canvas
-	var width = $(`#${CANVAS_MAIN_NAME}`).css('width');
-	var height = $(`#${CANVAS_MAIN_NAME}`).css('height');
+		// main canvas
+		var width = $(`#${CANVAS_MAIN_NAME}`).css('width');
+		var height = $(`#${CANVAS_MAIN_NAME}`).css('height');
 
-	$(`#${CANVAS_MAIN_NAME}`)
-	    .attr('width', width)
-	    .attr('height', height);
+		$(`#${CANVAS_MAIN_NAME}`)
+		    .attr('width', width)
+		    .attr('height', height);
 	
     	canvaces.main  = new fabric.Canvas(CANVAS_MAIN_NAME, {
     	    backgroundColor: CANVAS_BACKGROUND_COLOR,
     	    selectionLineWidth: 2
+    	});
+    	canvaces.main.selection = false; //Selección multiple lo desactiva
+    	
+    	var clickHandler = function(e) {
+    		console.log("captura evento");
+    		console.log(e.target);
+    	};
+
+    	canvaces.main.on({
+    		'mouse:down' : clickHandler
     	});
     };
 
@@ -134,22 +144,36 @@ var MockerController = (function () {
     
     const init = function() {
         StateSessionControllerModule.init();
-	initCanvas();
-	initTools();
-	
-	console.assert(RestMockerController !== undefined);
-	RestMockerController.init({
-	    onSuccess: function () {
-		connectToServer();
-	    },
-	    onFailed: function () {
-		showErrorMessage("Rest controller intialization failed");
-	    }
-	});
+		initCanvas();
+		initTools();
+		ActionTools.init();
 
-	myPolygons = [];
+		console.assert(RestMockerController !== undefined);
+		RestMockerController.init({
+		    onSuccess: function () {
+				connectToServer();
+		    },
+		    onFailed: function () {
+				showErrorMessage("Rest controller intialization failed");
+		    }
+		});
 
-	test();
+		myPolygons = [];
+
+		//test();
+    };
+
+    const getCanvas = function() {
+    	//console.log("Pasa!");
+    	return canvaces.main;
+    };
+
+    const getSelectedTool = function() {
+    	return selectedTool;
+    };
+
+    const setSelectedTool = function(nt) {
+    	selectedTool = nt;
     };
 
     const connectToServer = function() {
@@ -157,8 +181,8 @@ var MockerController = (function () {
     };
 
     const addObject = function (obj) {
-	console.assert(obj instanceof Polygon);
-	// TODO
+		console.assert(obj instanceof Polygon);
+		// TODO
     };
 
     const removeObject = function (objId) {
@@ -176,7 +200,9 @@ var MockerController = (function () {
 	connectToServer: connectToServer,
 	addObject : addObject,
 	removeObject : removeObject,
-	selectObject : selectObject
+	selectObject : selectObject,
+	getCanvas : getCanvas,
+	getSelectedTool : getSelectedTool
     };
 })();
 

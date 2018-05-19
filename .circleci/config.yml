@@ -1,3 +1,30 @@
+
+Skip to content
+This repository
+
+    Pull requests
+    Issues
+    Marketplace
+    Explore
+
+    @fardila1011
+
+0
+0
+
+    0
+
+Kleptomania/KleptomaniaTheGame
+Code
+Issues 0
+Pull requests 1
+Projects 0
+Wiki
+Insights
+KleptomaniaTheGame/.circleci/config.yml
+bc02f0e on Mar 15
+@DxMortem DxMortem Initial commit
+43 lines (33 sloc) 1.05 KB
 # Java Maven CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
@@ -8,7 +35,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-
+      
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -19,7 +46,7 @@ jobs:
     environment:
       # Customize the JVM maximum heap limit
       MAVEN_OPTS: -Xmx3200m
-
+    
     steps:
       - checkout
 
@@ -36,6 +63,6 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-
+        
       # run tests!
       - run: mvn integration-test

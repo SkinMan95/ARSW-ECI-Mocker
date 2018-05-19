@@ -131,8 +131,11 @@ public class ServerMockerServices implements MockerServices {
             throw new MockerServicesException("El usuario ya existe");
         }
 
+        System.out.println("Usuario antes de registrarse: " + newUser);
         newUser.setUserId(USER_IDS.getAndAdd(1));
+        System.out.println("Usuario despues de registrarse: " + newUser);
         users.put(newUser.getUserName(), newUser);
+        System.out.println("Usuarios registrados: " + users);
     }
 
     @Override
@@ -185,7 +188,7 @@ public class ServerMockerServices implements MockerServices {
         return res;
     }
 
-    private String generateNewToken() { // TODO: cambiar a alfanumerico
+    private String generateNewToken() {
         StringBuilder res = new StringBuilder();
         do {
             for (int i = 0; i < TOKEN_BYTE_SIZE; i++) {
@@ -194,6 +197,13 @@ public class ServerMockerServices implements MockerServices {
         } while (tokensUsed.contains(res.toString()));
 
         return res.toString();
+    }
+    
+    private User getUserByName(String username) {
+        if (users.containsKey(username)) {
+            return users.get(username);
+        }
+        return null;
     }
 
     @Override
@@ -211,7 +221,7 @@ public class ServerMockerServices implements MockerServices {
         }
 
         String tk = getToken(session, user);
-        Pair<User, Session> tkVal = (tk != null) ? tokens.get(tk) : new Pair<>(user, getSession(session));
+        Pair<User, Session> tkVal = (tk != null) ? tokens.get(tk) : new Pair<>(getUserByName(user.getUserName()), getSession(session));
 
         if (tk != null) {
             tokens.remove(tk);

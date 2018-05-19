@@ -47,16 +47,34 @@
         <div class="main">
             <div id="toolsSection" class="toolsCanvas">
                 <span class="toolBtns icon-compass" id="selectionTool"></span>
-                <span class="toolBtns icon-undo" id="undoTool"></span>
-                <span class="toolBtns icon-redo" id="redoTool"></span>
+                <!--<span class="toolBtns icon-undo" id="undoTool"></span>
+                <span class="toolBtns icon-redo" id="redoTool"></span>-->
                 <span class="toolBtns icon-font-size" id="textTool"></span>
-                <span class="toolBtns icon-pencil2" id="pencilTool"></span>
+                <!--<span class="toolBtns icon-pencil2" id="pencilTool"></span>-->
                 <span class="toolBtns icon-eyedropper" id="pickerTool"></span>
                 <span class="toolBtns icon-bin" id="garbageTool"></span>
                 <span class="toolBtns icon-zoom-in" id="zoomTool"></span>
                 <span class="toolBtns icon-star-empty" id="objectTool"></span> <!-- object = star -->
             </div>
             <canvas id="drawingCanvas" class="drawingCanvas"></canvas>
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <center>
+                <button id="triangle"></button>
+                <button id="square"></button>
+                <button id="circle"></button>
+                <p></p>
+                <input name="Color Picker" id="colorPicker" type="color" value="#003dff"/>
+            </center>
+          </div>
+
         </div>
 
         <footer/>
@@ -76,6 +94,9 @@
         <script src="js/fabric.min.js"></script>
         <script src="js/stateSession.js"></script>
         <script src="js/RestMockerController.js"></script>
+        <script src="js/actionTools.js"></script>
         <script src="js/MockerController.js"></script>
+
+
     </body>
 </html>

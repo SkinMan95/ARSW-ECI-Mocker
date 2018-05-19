@@ -87,7 +87,9 @@ public class MockerAPIServices {
     public ResponseEntity<?> getUsersInSession(@PathVariable int sessionid) {
         try {
             log("intenta obtener los usuarios en la sesion " + sessionid);
-            return new ResponseEntity<>(services.getUsersInSession(sessionid), HttpStatus.OK);
+            List<User> res = services.getUsersInSession(sessionid);
+            log("usuarios en sesion: " + res);
+            return new ResponseEntity<>(res, HttpStatus.OK);
         } catch (MockerServicesException ex) {
             error("fallo al obtener los usuarios de la sesion: " + ex);
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);

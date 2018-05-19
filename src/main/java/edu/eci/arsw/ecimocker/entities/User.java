@@ -19,8 +19,13 @@ public class User {
     }
 
     public User(int id, String name) {
+        this(id, name, "");
+    }
+    
+    public User(int id, String name, String color) {
         this.userId = id;
         this.userName = name;
+        this.color = color;
     }
 
     public String getUserName() {
@@ -49,7 +54,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "userName=" + userName + ", userId=" + userId + ", color=" + color + '}';
+        return "User{" + "userName=" + userName + ", userId=" + userId + ", color=" + color + ", classId=" + super.toString() + '}';
     }
 
 }
