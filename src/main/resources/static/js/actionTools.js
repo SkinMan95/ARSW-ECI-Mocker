@@ -7,6 +7,7 @@ var ActionTools = (function () {
 		zoomTool();
 		textTool();
 		garbageTool();
+		imageTool();
 	};
 
 	
@@ -195,6 +196,94 @@ var ActionTools = (function () {
 			canvas.freeDrawingBrush = vLinePatternBrush;
 		});
 	};
+
+	const imageTool = function () {
+		$('#imageTool').click(function() {
+			// Get the modal
+			var modal = document.getElementById('myModal2');
+
+			// Get the button that opens the modal
+			var btn = document.getElementById("imageTool");
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks the button, open the modal 
+			btn.onclick = function() {
+			    modal.style.display = "block";
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+			    modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+			    if (event.target == modal) {
+			        modal.style.display = "none";
+			    }
+			}
+		});
+
+		$('#square').click(function () {
+			var rect = new fabric.Rect({
+    	    	left: 100,
+    	    	top: 100,
+    	    	fill: document.getElementById("colorPicker").value,
+    	    	width: 20,
+    	    	height: 20
+    	    });
+
+			var canvas = MockerController.getCanvas();
+			console.log("Llama la funcion del controler");
+            console.log(rect);
+            rect.lockScalingX = rect.lockScalingY = true;
+    	    canvas.add(rect);
+    	    lockOptions(true);
+            console.log(rect);
+            document.getElementById('myModal').style.display = "none";
+            //canvas.deactivateAll().renderAll();
+            $("#selectionTool").click();
+		});
+
+		$('#circle').click(function () {
+			var circ = new fabric.Circle({ 
+				radius: 30, 
+				fill: document.getElementById("colorPicker").value, 
+				top: 100, 
+				left: 100 
+			});
+
+			var canvas = MockerController.getCanvas();
+			circ.lockScalingX = circ.lockScalingY = true;
+    	    canvas.add(circ);
+    	    lockOptions(true);
+            console.log(circ);
+            document.getElementById('myModal').style.display = "none";
+            //canvas.deactivateAll().renderAll();
+            $("#selectionTool").click();
+		});
+
+		$('#triangle').click(function () {
+			var triang = new fabric.Triangle({ 
+				top: 300, 
+				left: 210, 
+				width: 100, 
+				height: 100, 
+				fill: document.getElementById("colorPicker").value 
+			});
+
+			var canvas = MockerController.getCanvas();
+			triang.lockScalingX = triang.lockScalingY = true;
+    	    canvas.add(triang);
+    	    lockOptions(true);
+            console.log(triang);
+            document.getElementById('myModal').style.display = "none";
+            //canvas.deactivateAll().renderAll();
+            $("#selectionTool").click();
+		});
+	};	
 
 	return {
 		init : init
