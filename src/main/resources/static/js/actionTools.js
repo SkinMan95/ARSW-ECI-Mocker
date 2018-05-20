@@ -239,47 +239,48 @@ var ActionTools = (function () {
 	    	    canvas.add(img).setActiveObject(img);;
 	    	    lockOptions(true);
 	            console.log(img);
-	            document.getElementById('myModal').style.display = "none";
+	            document.getElementById('myModal2').style.display = "none";
 	            //canvas.deactivateAll().renderAll();
 	            $("#selectionTool").click();
         	});
 		});
 
-		$('#circle').click(function () {
-			var circ = new fabric.Circle({ 
-				radius: 30, 
-				fill: document.getElementById("colorPicker").value, 
-				top: 100, 
-				left: 100 
-			});
+		$('#lupa').click(function () {
+			fabric.Image.fromURL('/images/lupa.png', function(img) {
+				img.scale(0.5).set({
+					left: 150,
+					top: 150
+				});
 
-			var canvas = MockerController.getCanvas();
-			circ.lockScalingX = circ.lockScalingY = true;
-    	    canvas.add(circ);
-    	    lockOptions(true);
-            console.log(circ);
-            document.getElementById('myModal').style.display = "none";
-            //canvas.deactivateAll().renderAll();
-            $("#selectionTool").click();
+				var canvas = MockerController.getCanvas();
+	            console.log(img);
+	            img.lockScalingX = img.lockScalingY = true;
+	    	    canvas.add(img).setActiveObject(img);;
+	    	    lockOptions(true);
+	            console.log(img);
+	            document.getElementById('myModal2').style.display = "none";
+	            //canvas.deactivateAll().renderAll();
+	            $("#selectionTool").click();
+        	});
 		});
 
-		$('#triangle').click(function () {
-			var triang = new fabric.Triangle({ 
-				top: 300, 
-				left: 210, 
-				width: 100, 
-				height: 100, 
-				fill: document.getElementById("colorPicker").value 
-			});
+		$('#browser').click(function () {
+			fabric.Image.fromURL('/images/browser.jpg', function(img) {
+				img.scale(0.5).set({
+					left: 150,
+					top: 150
+				});
 
-			var canvas = MockerController.getCanvas();
-			triang.lockScalingX = triang.lockScalingY = true;
-    	    canvas.add(triang);
-    	    lockOptions(true);
-            console.log(triang);
-            document.getElementById('myModal').style.display = "none";
-            //canvas.deactivateAll().renderAll();
-            $("#selectionTool").click();
+				var canvas = MockerController.getCanvas();
+	            console.log(img);
+	            img.lockScalingX = img.lockScalingY = true;
+	    	    canvas.add(img).setActiveObject(img);;
+	    	    lockOptions(true);
+	            console.log(img);
+	            document.getElementById('myModal2').style.display = "none";
+	            //canvas.deactivateAll().renderAll();
+	            $("#selectionTool").click();
+        	});
 		});
 	};	
 
