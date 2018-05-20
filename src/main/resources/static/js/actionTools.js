@@ -181,6 +181,17 @@ var ActionTools = (function () {
 					return patternCanvas;
 			    };
 			};
+			if (canvas.freeDrawingBrush) {
+				canvas.freeDrawingBrush.color = drawingColorEl.value;
+				canvas.freeDrawingBrush.width = parseInt(drawingLineWidthEl.value, 10) || 1;
+				canvas.freeDrawingBrush.shadow = new fabric.Shadow({
+					blur: parseInt(drawingShadowWidth.value, 10) || 0,
+					offsetX: 0,
+					offsetY: 0,
+					affectStroke: true,
+					color: drawingShadowColorEl.value,
+				});
+		    }
 			canvas.freeDrawingBrush = vLinePatternBrush;
 		});
 	};
