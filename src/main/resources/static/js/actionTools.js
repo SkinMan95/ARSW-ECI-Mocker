@@ -52,6 +52,7 @@ var ActionTools = (function () {
 		$("#selectionTool").click(function() {
 			lockOptions(false);
 			var canvas = MockerController.getCanvas();
+			canvas.isDrawingMode = false;
 			canvas.forEachObject(function(o){
 				o.lockScalingX = o.lockScalingY = true;
 			});
@@ -182,14 +183,13 @@ var ActionTools = (function () {
 			    };
 			};
 			if (canvas.freeDrawingBrush) {
-				canvas.freeDrawingBrush.color = drawingColorEl.value;
-				canvas.freeDrawingBrush.width = parseInt(drawingLineWidthEl.value, 10) || 1;
+				canvas.freeDrawingBrush.width = 1;
 				canvas.freeDrawingBrush.shadow = new fabric.Shadow({
-					blur: parseInt(drawingShadowWidth.value, 10) || 0,
+					blur: 0,
 					offsetX: 0,
 					offsetY: 0,
 					affectStroke: true,
-					color: drawingShadowColorEl.value,
+					color: black,
 				});
 		    }
 			canvas.freeDrawingBrush = vLinePatternBrush;
