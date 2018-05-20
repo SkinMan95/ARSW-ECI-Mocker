@@ -97,11 +97,11 @@
     width: 104px;
 }
 
-#buscador {
-    background-image: url("/images/search_button.jpg");
+#google_button {
+    background-image: url("/images/google_button.png");
     background-size: 100px 130px;
     height: 134px;  
-    width: 104px;
+    width: 104px; 
 }
 
 .icon-pencil2:before {

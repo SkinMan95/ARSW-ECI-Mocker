@@ -226,25 +226,23 @@ var ActionTools = (function () {
 			}
 		});
 
-		$('#square').click(function () {
-			var rect = new fabric.Rect({
-    	    	left: 100,
-    	    	top: 100,
-    	    	fill: document.getElementById("colorPicker").value,
-    	    	width: 20,
-    	    	height: 20
-    	    });
+		$('#google_button').click(function () {
+			fabric.Image.fromURL('/images/google_button.png', function(img) {
+				img.scale(0.5).set({
+					left: 150,
+					top: 150
+				});
 
-			var canvas = MockerController.getCanvas();
-			console.log("Llama la funcion del controler");
-            console.log(rect);
-            rect.lockScalingX = rect.lockScalingY = true;
-    	    canvas.add(rect);
-    	    lockOptions(true);
-            console.log(rect);
-            document.getElementById('myModal').style.display = "none";
-            //canvas.deactivateAll().renderAll();
-            $("#selectionTool").click();
+				var canvas = MockerController.getCanvas();
+	            console.log(img);
+	            img.lockScalingX = img.lockScalingY = true;
+	    	    canvas.add(img).setActiveObject(img);;
+	    	    lockOptions(true);
+	            console.log(img);
+	            document.getElementById('myModal').style.display = "none";
+	            //canvas.deactivateAll().renderAll();
+	            $("#selectionTool").click();
+        	});
 		});
 
 		$('#circle').click(function () {
