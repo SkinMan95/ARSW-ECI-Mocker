@@ -3,11 +3,13 @@ var ActionTools = (function () {
 	var init = function () {
 		createObjTool();
 		selectionTool();
+		pencilTool();
 		zoomTool();
 		textTool();
-		pickerTool();
 		garbageTool();
 	};
+
+	
 
 	const textTool = function() {
 		$("#textTool").click(function() {
@@ -24,13 +26,6 @@ var ActionTools = (function () {
 			$("#selectionTool").click();
 		});
 	};
-
-	const pickerTool = function() {
-		$("#pickerTool").click(function() {
-			lockOptions(true);
-			$("#fontSel")[0].click();
-		});
-	}
 
 	const garbageTool = function() {
 		$("#garbageTool").click(function() {
@@ -66,6 +61,7 @@ var ActionTools = (function () {
 	const lockOptions = function (val) {
 		console.log("Boquea rotacion y movimiento");
 		var canvas = MockerController.getCanvas();
+		canvas.isDrawingMode = !val;
 		canvas.forEachObject(function(o){ 
 			o.lockScalingX = o.lockScalingY = val;
 			o.lockRotation = val;
@@ -158,6 +154,34 @@ var ActionTools = (function () {
             document.getElementById('myModal').style.display = "none";
             //canvas.deactivateAll().renderAll();
             $("#selectionTool").click();
+		});
+	};
+
+	const pencilTool = function () {
+		$('#pencilTool').click(function() {
+			lockOptions(true);
+			var canvas = MockerController.getCanvas();
+			canvas.isDrawingMode = true;
+			if (fabric.PatternBrush){
+				var vLinePatternBrush = new fabric.PatternBrush(canvas);
+				vLinePatternBrush.getPatternSrc = function() {
+
+					var patternCanvas = fabric.document.createElement('canvas');
+					patternCanvas.width = patternCanvas.height = 10;
+					var ctx = patternCanvas.getContext('2d');
+
+					ctx.strokeStyle = this.color;
+					ctx.lineWidth = 5;
+					ctx.beginPath();
+					ctx.moveTo(0, 5);
+					ctx.lineTo(10, 5);
+					ctx.closePath();
+					ctx.stroke();
+
+					return patternCanvas;
+			    };
+			};
+			canvas.freeDrawingBrush = vLinePatternBrush;
 		});
 	};
 
