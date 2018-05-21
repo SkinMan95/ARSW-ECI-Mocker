@@ -1,6 +1,6 @@
 var ActionTools = (function () {
 
-    var init = function () {
+    const init = function () {
         createObjTool();
         selectionTool();
         pencilTool();
@@ -10,19 +10,45 @@ var ActionTools = (function () {
         imageTool();
     };
 
+    const addObject = function (type, atts) {
+	var obj = {
+	    objId: 0,
+	    selected: true,
+	    userId: 0,
+	    type: type,
+	    attributes: JSON.stringify(atts)
+	};
 
+	var session = sessionStorage.getItem('sesion');
+	var token = sessionStorage.getItem('token');
+	
+	RestMockerController.addObject(session, token, obj, {
+	    onSuccess: function (payload) {
+		console.log('Exito en adicion');
+	    },
+	    onFailed: function (err) {
+		console.error(err);
+	    }
+	});
+    };
 
     const textTool = function () {
         $("#textTool").click(function () {
             lockOptions(true);
             var canvas = MockerController.getCanvas();
-            var text = new fabric.Textbox('Texto', {
+	    var atts = {
+		text: "Texto",
                 left: 100,
                 top: 150,
                 fill: '#000000',
                 strokeWidth: 2,
                 stroke: "#000000",
-            });
+            };
+            var text = new fabric.Textbox("Text", atts);
+	    //text.set(atts);
+
+	    addObject('textbox', atts);
+	    
             canvas.add(text);
             $("#selectionTool").click();
         });
@@ -85,47 +111,34 @@ var ActionTools = (function () {
             // When the user clicks the button, open the modal 
             btn.onclick = function () {
                 modal.style.display = "block";
-            }
+            };
 
             // When the user clicks on <span> (x), close the modal
             span.onclick = function () {
                 modal.style.display = "none";
-            }
+            };
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
-            }
+            };
         });
 
         $('#square').click(function () {
-            var rect = new fabric.Rect({
+	    var atts = {
                 left: 100,
                 top: 100,
                 fill: document.getElementById("colorPicker").value,
                 width: 20,
                 height: 20
-            });
-
-            var obj = {
-                id: 0,
-                selected: true, // por defecto esta seleccionado al crearse
-                userId: 0, // TODO cambiar por el id del usuario
-                type: "rect", // por defecto
-                attributes: JSON.stringify({})
             };
+	    
+            var rect = new fabric.Rect();
+            rect.set(atts);
 
-            RestMockerController.addObject(sessionStorage.getItem("sesion"),
-                    sessionStorage.getItem("token"), obj, {
-                onSuccess: function (payload) {
-                    console.log("Exito");
-                },
-                onFailed: function (error) {
-                    console.error("Error " + error);
-                }
-            });
+	    addObject('rect', atts); // importante
 
             var canvas = MockerController.getCanvas();
             console.log("Llama la funcion del controler");
@@ -138,8 +151,7 @@ var ActionTools = (function () {
             document.getElementById('myModal').style.display = "none";
             //canvas.deactivateAll().renderAll();
             $("#selectionTool").click();
-        }
-        );
+        });
 
         $('#circle').click(function () {
             var circ = new fabric.Circle({
@@ -176,8 +188,8 @@ var ActionTools = (function () {
             //canvas.deactivateAll().renderAll();
             $("#selectionTool").click();
         });
-    }
-    ;
+    };
+    
     const pencilTool = function () {
         $('#pencilTool').click(function () {
             lockOptions(true);
@@ -201,8 +213,8 @@ var ActionTools = (function () {
 
                     return patternCanvas;
                 };
-            }
-            ;
+            };
+	    
             if (canvas.freeDrawingBrush) {
                 canvas.freeDrawingBrush.width = 1;
                 canvas.freeDrawingBrush.shadow = new fabric.Shadow({
@@ -231,19 +243,19 @@ var ActionTools = (function () {
             // When the user clicks the button, open the modal 
             btn.onclick = function () {
                 modal.style.display = "block";
-            }
+            };
 
             // When the user clicks on <span> (x), close the modal
             span.onclick = function () {
                 modal.style.display = "none";
-            }
+            };
 
             // When the user clicks anywhere outside of the modal, close it
             window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
-            }
+            };
         });
 
         $('#google_button').click(function () {

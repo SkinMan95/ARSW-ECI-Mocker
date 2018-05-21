@@ -17,9 +17,10 @@ var RestMockerController = (function () {
         // TODO
         subscribedTopics = [];
         stompIsConnected = false;
+	registerToServer(callback);
     };
 
-    var registerToServer = function (userName, callback) {
+    var registerToServer = function (callback) {
         console.info('Connecting to WS...');
         var socket = new SockJS('/stompendpoint');
         stompClient = Stomp.over(socket);
@@ -27,6 +28,7 @@ var RestMockerController = (function () {
         stompClient.connect({}, function (frame) {
             console.log(`Connected: ${frame}`);
             stompIsConnected = true;
+	    callback.onSuccess();
         });
 
         // TODO: axios realiza registro en el servidor
@@ -41,7 +43,8 @@ var RestMockerController = (function () {
     };
 
     var subscribeToTopic = function (topic, topicCallback) {
-        console.assert(topic instanceof String);
+        console.assert(typeof topic === "string");
+	console.log('subscribing to topic:', topic);
 
         console.assert(stompClient !== undefined);
         console.assert(stompIsConnected);
@@ -66,20 +69,20 @@ var RestMockerController = (function () {
 
     var getConnectedUsers = function (session, callback) {
         axios.get(SERVER_URL + "/mocker/users/" + session)
-                .then(callback.onSuccess)
-                .catch(callback.onFailed);
+            .then(callback.onSuccess)
+            .catch(callback.onFailed);
     };
 
     var dissociateUser = function (token, callback) {
         axios.delete(SERVER_URL + "/mocker/users/" + token)
-                .then(callback.onSuccess)
-                .catch(callback.onFailed);
+            .then(callback.onSuccess)
+            .catch(callback.onFailed);
     };
     
     var addObject = function (session, token, obj, callback) {
         axios.post(SERVER_URL + "/mocker/sessions/" + session + "/newobject?token=" + token, obj)
-                .then(callback.onSuccess)
-                .catch(callback.onFailed);
+            .then(callback.onSuccess)
+            .catch(callback.onFailed);
     };
 
     return {

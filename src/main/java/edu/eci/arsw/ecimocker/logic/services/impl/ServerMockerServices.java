@@ -31,6 +31,7 @@ public class ServerMockerServices implements MockerServices {
 
     private static final AtomicInteger SESSIONS_IDS = new AtomicInteger(0);
     private static final AtomicInteger USER_IDS = new AtomicInteger(0);
+    private static final AtomicInteger OBJECTS_IDS = new AtomicInteger(0);
 
     private static final Random RANDOM = new Random();
 
@@ -329,6 +330,8 @@ public class ServerMockerServices implements MockerServices {
 
     @Override
     public void addObject(int session, CanvasObject newObj, String token) throws MockerServicesException {
+        newObj.setObjId(OBJECTS_IDS.getAndAdd(1));
+        
         if (!sessionObjects.containsKey(session)) {
             throw new MockerServicesException("La sesion no existe");
         }
@@ -340,7 +343,7 @@ public class ServerMockerServices implements MockerServices {
         if (sessionObjects.get(session).containsKey(newObj.getObjId())) {
             throw new MockerServicesException("Un objeto con el mismo ID ya existe");
         }
-
+        
         sessionObjects.get(session).put(newObj.getObjId(), newObj);
         Map<String, String> m = new HashMap<>();
         m.put("session", "" + session);

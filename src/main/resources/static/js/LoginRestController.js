@@ -39,4 +39,6 @@ var LoginRestController = (function(){
     
 })();
 
-
+window.onload = function () {
+    LoginControllerModule.init();
+};
