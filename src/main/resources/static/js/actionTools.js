@@ -3,11 +3,14 @@ var ActionTools = (function () {
 	var init = function () {
 		createObjTool();
 		selectionTool();
+		pencilTool();
 		zoomTool();
 		textTool();
-		pickerTool();
 		garbageTool();
+		imageTool();
 	};
+
+	
 
 	const textTool = function() {
 		$("#textTool").click(function() {
@@ -24,13 +27,6 @@ var ActionTools = (function () {
 			$("#selectionTool").click();
 		});
 	};
-
-	const pickerTool = function() {
-		$("#pickerTool").click(function() {
-			lockOptions(true);
-			//Se implementa cuando las figuras estén sincronizadas con el servidor
-		});
-	}
 
 	const garbageTool = function() {
 		$("#garbageTool").click(function() {
@@ -57,6 +53,7 @@ var ActionTools = (function () {
 		$("#selectionTool").click(function() {
 			lockOptions(false);
 			var canvas = MockerController.getCanvas();
+			canvas.isDrawingMode = false;
 			canvas.forEachObject(function(o){
 				o.lockScalingX = o.lockScalingY = true;
 			});
@@ -66,6 +63,7 @@ var ActionTools = (function () {
 	const lockOptions = function (val) {
 		console.log("Boquea rotacion y movimiento");
 		var canvas = MockerController.getCanvas();
+		canvas.isDrawingMode = !val;
 		canvas.forEachObject(function(o){ 
 			o.lockScalingX = o.lockScalingY = val;
 			o.lockRotation = val;
@@ -160,6 +158,131 @@ var ActionTools = (function () {
             $("#selectionTool").click();
 		});
 	};
+
+	const pencilTool = function () {
+		$('#pencilTool').click(function() {
+			lockOptions(true);
+			var canvas = MockerController.getCanvas();
+			canvas.isDrawingMode = true;
+			if (fabric.PatternBrush){
+				var vLinePatternBrush = new fabric.PatternBrush(canvas);
+				vLinePatternBrush.getPatternSrc = function() {
+
+					var patternCanvas = fabric.document.createElement('canvas');
+					patternCanvas.width = patternCanvas.height = 10;
+					var ctx = patternCanvas.getContext('2d');
+
+					ctx.strokeStyle = this.color;
+					ctx.lineWidth = 5;
+					ctx.beginPath();
+					ctx.moveTo(0, 5);
+					ctx.lineTo(10, 5);
+					ctx.closePath();
+					ctx.stroke();
+
+					return patternCanvas;
+			    };
+			};
+			if (canvas.freeDrawingBrush) {
+				canvas.freeDrawingBrush.width = 1;
+				canvas.freeDrawingBrush.shadow = new fabric.Shadow({
+					blur: 0,
+					offsetX: 0,
+					offsetY: 0,
+					affectStroke: true,
+					color: black,
+				});
+		    }
+			canvas.freeDrawingBrush = vLinePatternBrush;
+		});
+	};
+
+	const imageTool = function () {
+		$('#imageTool').click(function() {
+			// Get the modal
+			var modal = document.getElementById('myModal2');
+
+			// Get the button that opens the modal
+			var btn = document.getElementById("imageTool");
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks the button, open the modal 
+			btn.onclick = function() {
+			    modal.style.display = "block";
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+			    modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+			    if (event.target == modal) {
+			        modal.style.display = "none";
+			    }
+			}
+		});
+
+		$('#google_button').click(function () {
+			fabric.Image.fromURL('/images/google_button.png', function(img) {
+				img.scale(0.5).set({
+					left: 150,
+					top: 150
+				});
+
+				var canvas = MockerController.getCanvas();
+	            console.log(img);
+	            img.lockScalingX = img.lockScalingY = true;
+	    	    canvas.add(img).setActiveObject(img);;
+	    	    lockOptions(true);
+	            console.log(img);
+	            document.getElementById('myModal2').style.display = "none";
+	            //canvas.deactivateAll().renderAll();
+	            $("#selectionTool").click();
+        	});
+		});
+
+		$('#lupa').click(function () {
+			fabric.Image.fromURL('/images/lupa.png', function(img) {
+				img.scale(0.5).set({
+					left: 150,
+					top: 150
+				});
+
+				var canvas = MockerController.getCanvas();
+	            console.log(img);
+	            img.lockScalingX = img.lockScalingY = true;
+	    	    canvas.add(img).setActiveObject(img);;
+	    	    lockOptions(true);
+	            console.log(img);
+	            document.getElementById('myModal2').style.display = "none";
+	            //canvas.deactivateAll().renderAll();
+	            $("#selectionTool").click();
+        	});
+		});
+
+		$('#browser').click(function () {
+			fabric.Image.fromURL('/images/browser.jpg', function(img) {
+				img.scale(0.5).set({
+					left: 150,
+					top: 150
+				});
+
+				var canvas = MockerController.getCanvas();
+	            console.log(img);
+	            img.lockScalingX = img.lockScalingY = true;
+	    	    canvas.add(img).setActiveObject(img);;
+	    	    lockOptions(true);
+	            console.log(img);
+	            document.getElementById('myModal2').style.display = "none";
+	            //canvas.deactivateAll().renderAll();
+	            $("#selectionTool").click();
+        	});
+		});
+	};	
 
 	return {
 		init : init

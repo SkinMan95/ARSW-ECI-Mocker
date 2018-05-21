@@ -83,6 +83,27 @@
     width: 104px;
 }
 
+#browser {
+    background-image: url("/images/browser.jpg");
+    background-size: 100px 130px;
+    height: 134px;  
+    width: 104px;
+}
+
+#lupa {
+    background-image: url("/images/lupa.png");
+    background-size: 100px 130px;
+    height: 134px;  
+    width: 104px;
+}
+
+#google_button {
+    background-image: url("/images/google_button.png");
+    background-size: 100px 130px;
+    height: 134px;  
+    width: 104px; 
+}
+
 .icon-pencil2:before {
   content: "\e906";
 }

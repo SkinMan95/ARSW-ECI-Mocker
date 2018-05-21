@@ -50,10 +50,12 @@
                 <!--<span class="toolBtns icon-undo" id="undoTool"></span>
                 <span class="toolBtns icon-redo" id="redoTool"></span>-->
                 <span class="toolBtns icon-font-size" id="textTool"></span>
-                <!--<span class="toolBtns icon-pencil2" id="pencilTool"></span>-->
-                <span class="toolBtns icon-eyedropper" id="pickerTool"></span>
+                <span class="toolBtns icon-pencil2" id="pencilTool"></span>
+                <!--<input type="color" id="fontSel">
+                <span class="toolBtns icon-eyedropper" id="pickerTool"></span>-->
                 <span class="toolBtns icon-bin" id="garbageTool"></span>
                 <span class="toolBtns icon-zoom-in" id="zoomTool"></span>
+                <span class="toolBtns icon-file-picture" id="imageTool"></span>
                 <span class="toolBtns icon-star-empty" id="objectTool"></span> <!-- object = star -->
             </div>
             <canvas id="drawingCanvas" class="drawingCanvas"></canvas>
@@ -74,9 +76,22 @@
                 <input name="Color Picker" id="colorPicker" type="color" value="#003dff"/>
             </center>
           </div>
-
         </div>
 
+          <!-- The Modal 2 -->
+        <div id="myModal2" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <center>
+                <button id="browser"></button>
+                <button id="lupa"></button>
+                <button id="google_button"></button>
+            </center>
+          </div>
+        </div>  
         <footer/>
 
         <!-- Bootstrap core JavaScript
