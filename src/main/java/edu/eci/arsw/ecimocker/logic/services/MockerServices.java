@@ -12,6 +12,14 @@ import java.util.List;
 public interface MockerServices {
 
     /**
+     * Agrega una accion para realizar en caso de ocurrir un evento
+     * @param observer nombre del observado
+     * @param call accion a llamar en caso del evento
+     * @throws MockerServicesException si no existe el observador
+     */
+    void addAction(String observer, Callback call) throws MockerServicesException;
+    
+    /**
      * Agrega una nueva sesion
      *
      * @param sessionName nombre de la sesion
