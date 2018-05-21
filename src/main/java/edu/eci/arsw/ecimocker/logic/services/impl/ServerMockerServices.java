@@ -3,9 +3,12 @@ package edu.eci.arsw.ecimocker.logic.services.impl;
 import edu.eci.arsw.ecimocker.entities.CanvasObject;
 import edu.eci.arsw.ecimocker.entities.Session;
 import edu.eci.arsw.ecimocker.entities.User;
+import edu.eci.arsw.ecimocker.logic.services.Callback;
 import edu.eci.arsw.ecimocker.logic.services.MockerServices;
 import edu.eci.arsw.ecimocker.logic.services.MockerServicesException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -36,6 +39,8 @@ public class ServerMockerServices implements MockerServices {
     Map<String, Pair<User, Session>> tokens;
     Set<String> tokensUsed;
     Map<Integer, Map<Integer, CanvasObject>> sessionObjects;
+    Map<String, List<Callback>> callbacks;
+    List<String> events = Arrays.asList("updateObject", "updateUser", "newObject", "deleteObject");
 
     public ServerMockerServices() {
         sessions = new ConcurrentHashMap<>();
@@ -43,6 +48,27 @@ public class ServerMockerServices implements MockerServices {
         tokens = new ConcurrentHashMap<>();
         tokensUsed = new ConcurrentSkipListSet<>();
         sessionObjects = new ConcurrentHashMap<>();
+        callbacks = new ConcurrentHashMap<>();
+
+        events.forEach((event) -> {
+            callbacks.put(event, new ArrayList<>());
+        });
+    }
+
+    @Override
+    public void addAction(String observer, Callback call) throws MockerServicesException {
+        if (events.contains(observer)) {
+            callbacks.get(observer).add(call);
+        } else {
+            throw new MockerServicesException("El observador no existe");
+        }
+    }
+
+    private void callActionsOfEvent(String event, Map<String, String> atts) {
+        assert events.contains(event);
+        callbacks.get(event).forEach((callback) -> {
+            callback.performAction(atts);
+        });
     }
 
     @Override
@@ -198,7 +224,7 @@ public class ServerMockerServices implements MockerServices {
 
         return res.toString();
     }
-    
+
     private User getUserByName(String username) {
         if (users.containsKey(username)) {
             return users.get(username);
@@ -233,6 +259,10 @@ public class ServerMockerServices implements MockerServices {
         } while (tokens.containsKey(newToken));
         tokens.put(newToken, tkVal);
 
+        Map<String, String> m = new HashMap<>();
+        m.put("session", "" + session);
+        callActionsOfEvent("updateUser", m);
+
         return newToken;
     }
 
@@ -263,9 +293,14 @@ public class ServerMockerServices implements MockerServices {
             throw new MockerServicesException("El token no existe");
         }
 
+        int session = tokens.get(token).getValue().getSessionID();
+        
         tokens.remove(token);
         assert tokensUsed.contains(token);
         tokensUsed.remove(token);
+        Map<String, String> m = new HashMap<>();
+        m.put("session", "" + session);
+        callActionsOfEvent("updateUser", m);
     }
 
     @Override
@@ -301,14 +336,17 @@ public class ServerMockerServices implements MockerServices {
         if (!isValidToken(session, token)) {
             throw new MockerServicesException("El token no es valido");
         }
-        
+
         if (sessionObjects.get(session).containsKey(newObj.getObjId())) {
             throw new MockerServicesException("Un objeto con el mismo ID ya existe");
         }
 
         sessionObjects.get(session).put(newObj.getObjId(), newObj);
+        Map<String, String> m = new HashMap<>();
+        m.put("session", "" + session);
+        callActionsOfEvent("newObject", m);
     }
-    
+
     @Override
     public void removeObject(int session, int objId, String token) throws MockerServicesException {
         if (!sessionObjects.containsKey(session)) {
@@ -322,14 +360,18 @@ public class ServerMockerServices implements MockerServices {
         if (!sessionObjects.get(session).containsKey(objId)) {
             throw new MockerServicesException("El objeto no existe");
         }
-        
+
         CanvasObject obj = sessionObjects.get(session).get(objId);
-        
+
         if (obj.isSelected() && obj.getUserId() != tokens.get(token).getKey().getUserId()) {
             throw new MockerServicesException("El objeto esta seleccionado por otro usuario");
         }
 
         sessionObjects.get(session).remove(objId);
+        
+        Map<String, String> m = new HashMap<>();
+        m.put("session", "" + session);
+        callActionsOfEvent("deleteObject", m);
     }
 
     @Override
@@ -345,14 +387,15 @@ public class ServerMockerServices implements MockerServices {
         if (!sessionObjects.get(session).containsKey(updObj.getObjId())) {
             throw new MockerServicesException("El objeto no existe");
         }
-        
+
         CanvasObject obj = sessionObjects.get(session).get(updObj.getObjId());
-        
+
         if (obj.isSelected() && obj.getUserId() != tokens.get(token).getKey().getUserId()) {
             throw new MockerServicesException("El objeto esta seleccionado por otro usuario");
         }
 
         sessionObjects.get(session).put(updObj.getObjId(), updObj);
+        callActionsOfEvent("updateObject", new HashMap<>());
     }
 
 }
