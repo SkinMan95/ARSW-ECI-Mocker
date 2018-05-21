@@ -18,6 +18,11 @@ var StateSessionControllerModule = (function () {
 		console.log("Se recibieron nuevos usuarios:" + usuarios);
                 actualizarListaUsuarios(usuarios);
             });
+            
+            stompClient.subscribe('/topic/' + session + '/objects', function(eventbody){
+                var objetos = JSON.parse(eventbody.body);
+		console.log("Se recibieron los topicos de los objetos:", objetos);
+            });
         });
         
         $('#abandonarS').click(function(){
