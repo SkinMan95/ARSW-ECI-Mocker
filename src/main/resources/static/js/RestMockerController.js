@@ -75,6 +75,12 @@ var RestMockerController = (function () {
                 .then(callback.onSuccess)
                 .catch(callback.onFailed);
     };
+    
+    var addObject = function (session, token, obj, callback) {
+        axios.post(SERVER_URL + "/mocker/sessions/" + session + "/newobject?token=" + token, obj)
+                .then(callback.onSuccess)
+                .catch(callback.onFailed);
+    };
 
     return {
         testing: TESTING,
@@ -84,6 +90,7 @@ var RestMockerController = (function () {
         publishInTopic: publishInTopic,
         subscribeToTopic: subscribeToTopic,
         getConnectedUsers: getConnectedUsers,
+        addObject : addObject,
         dissociateUser: dissociateUser
     };
 
