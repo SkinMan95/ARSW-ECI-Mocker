@@ -3,29 +3,18 @@ var StateSessionControllerModule = (function () {
     var session = null;
 
     var init = function () {
-        
         session = Number(sessionStorage.getItem("sesion"));
-        
-        console.info('Connecting...');
-        var socket = new SockJS('/stompendpoint');
-        stompClient = Stomp.over(socket);
 
-        stompClient.connect({}, function (frame) {
-            console.log('Connected: ' + frame);
-
-            stompClient.subscribe('/topic/' + session + '/users', function(eventbody){
-                var usuarios = JSON.parse(eventbody.body);
-		console.log("Se recibieron nuevos usuarios:" + usuarios);
-                actualizarListaUsuarios(usuarios);
-            });
-            
-            stompClient.subscribe('/topic/' + session + '/objects', function(eventbody){
-                var objetos = JSON.parse(eventbody.body);
-		console.log("Se recibieron los topicos de los objetos:", objetos);
-            });
+	RestMockerController.subscribeToTopic('/topic/' + session + '/users', function(usuarios){
+	    console.log("Se recibieron nuevos usuarios:" + usuarios);
+            actualizarListaUsuarios(usuarios);
         });
-        
-        $('#abandonarS').click(function(){
+
+	RestMockerController.subscribeToTopic('/topic/' + session + '/objects', function(objetos){
+	    console.log("Se recibieron los topicos de los objetos:", objetos);
+        });
+	
+        $('#abandonarS').click( function() {
             eliminarUsuarioDeSesion();
         });
 	

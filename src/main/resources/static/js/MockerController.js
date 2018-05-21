@@ -141,17 +141,22 @@ var MockerController = (function () {
     };
     
     /* ================ PUBLIC ================ */
+
+    var socket;
+    var stompClient;
     
     const init = function() {
-        StateSessionControllerModule.init();
-	initCanvas();
-	initTools();
-	ActionTools.init();
+	console.info("Initializing RestController");
 
 	console.assert(RestMockerController !== undefined);
 	RestMockerController.init({
 	    onSuccess: function () {
-		connectToServer();
+		console.log("RestController starts...");
+		StateSessionControllerModule.init();
+		initCanvas();
+		initTools();
+		ActionTools.init();
+		console.info("RestController finished loading.");
 	    },
 	    onFailed: function () {
 		showErrorMessage("Rest controller intialization failed");
@@ -176,13 +181,9 @@ var MockerController = (function () {
     	selectedTool = nt;
     };
 
-    const connectToServer = function() {
-	RestMockerController.registerToServer();
-    };
-
     const addObject = function (obj) {
-		console.assert(obj instanceof Polygon);
-		// TODO
+	console.assert(obj instanceof Polygon);
+	// TODO
     };
 
     const removeObject = function (objId) {
@@ -194,20 +195,33 @@ var MockerController = (function () {
 	console.assert(objId instanceof Number);
 	// TODO
     };
+
+    const getStompClient = function () {
+	return stompClient;
+    };
+
+    const getSocket = function () {
+	return socket;
+    };
     
     return {
 	init: init,
-	connectToServer: connectToServer,
 	addObject : addObject,
 	removeObject : removeObject,
 	selectObject : selectObject,
 	getCanvas : getCanvas,
-	getSelectedTool : getSelectedTool
+	getSelectedTool : getSelectedTool,
+	getStompClient : getStompClient,
+	getSocket : getSocket
     };
 })();
 
-console.assert = function(cond, text){ // ensure to stop execution
-    if( cond ) return;
-    if( console.assert.useDebugger ) debugger;
-    throw new Error(text || "Assertion failed!");
+// console.assert = function(cond, text){ // ensure to stop execution
+//     if( cond ) return;
+//     if( console.assert.useDebugger ) debugger;
+//     throw new Error(text || "Assertion failed!");
+// };
+
+window.onload = function () {
+    MockerController.init();
 };
