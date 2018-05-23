@@ -1,5 +1,6 @@
 package edu.eci.arsw.ecimocker.logic.services.impl;
 
+import edu.eci.arsw.ecimocker.dependencies.Pair;
 import edu.eci.arsw.ecimocker.entities.CanvasObject;
 import edu.eci.arsw.ecimocker.entities.Session;
 import edu.eci.arsw.ecimocker.entities.User;
@@ -16,7 +17,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.atomic.AtomicInteger;
-import javafx.util.Pair;
 import org.springframework.stereotype.Service;
 
 /**
