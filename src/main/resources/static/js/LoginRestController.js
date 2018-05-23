@@ -1,6 +1,6 @@
 var LoginRestController = (function(){
     
-    const DEFAULT_ADDRESS = 'http://localhost:8080';
+    const DEFAULT_ADDRESS = ''; //'http://localhost:8080';
     
     var newSession = function(sessionName, callback){
         console.log(sessionName);

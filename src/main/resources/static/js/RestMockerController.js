@@ -3,7 +3,7 @@ var RestMockerController = (function () {
     /* ================ PRIVATE ================ */
 
     /* ==== CONSTANTS ==== */
-    const SERVER_URL = 'http://localhost:8080'; // TODO
+    const SERVER_URL = ''; // 'http://localhost:8080'; // TODO
 
     /* ==== VARIABLES ==== */
     var stompClient = undefined;
